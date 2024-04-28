@@ -1,4 +1,4 @@
-import { useStore } from "../../../Store/UseStore";
+import { useStore } from "../../../store/UseStore";
 import { CgTrash, CgCloseR, CgFileDocument } from "react-icons/cg";
 import "./Accordion.css";
 

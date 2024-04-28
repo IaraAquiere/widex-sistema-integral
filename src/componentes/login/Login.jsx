@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useStore } from "../../Store/UseStore";
+import { useStore } from "../../store/UseStore";
 import Swal from "sweetalert2";
 import "./Login.css";
 

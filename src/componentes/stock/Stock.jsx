@@ -1,4 +1,4 @@
-import { useStore } from "../../Store/UseStore";
+import { useStore } from "../../store/UseStore";
 import { useEffect, useState } from "react";
 import Tabla from "./tabla/Tabla";
 import Accordion from "./accordion/Accordion";

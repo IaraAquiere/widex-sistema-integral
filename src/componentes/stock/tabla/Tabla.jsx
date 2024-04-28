@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useStore } from "../../../Store/UseStore";
+import { useStore } from "../../../store/UseStore";
 
 
 const Tabla = (paramProducto) => {
