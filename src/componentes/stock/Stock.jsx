@@ -68,7 +68,7 @@ const Stock = () => {
               <th>Precio</th>
             </tr>
           </thead>
-          <tbody className="table-group-divider">
+          <tbody className="table-group-divider" >
             {resultado.map((producto) => (
               <Tabla paramProducto={producto} />
             ))}

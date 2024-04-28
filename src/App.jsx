@@ -3,6 +3,7 @@ import Login from "./componentes/login/Login.jsx";
 import Stock from "./componentes/stock/Stock.jsx";
 import "./App.css";
 
+
 function App() {
   return (
     <BrowserRouter>
