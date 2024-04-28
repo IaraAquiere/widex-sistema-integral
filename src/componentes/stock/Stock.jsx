@@ -64,8 +64,8 @@ const Stock = () => {
           <thead>
             <tr>
               <th>Producto</th>
-              <th>Cantidad</th>
               <th>Precio</th>
+              <th>Stock</th>
             </tr>
           </thead>
           <tbody className="table-group-divider" >

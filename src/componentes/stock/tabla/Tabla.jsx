@@ -31,6 +31,7 @@ const Tabla = (paramProducto) => {
     <tr key={producto.id}>
       <td>{producto.descripcion}</td>
       <td>${producto.precio}</td>
+      <td>{producto.stock}</td>
       <td> 
         <div className="controles">
           <button onClick={restar}>-</button>
@@ -38,15 +39,16 @@ const Tabla = (paramProducto) => {
           <button onClick={sumar}>+</button>
         </div>
         </td>
-      <div className="boton-agregar">
-          <button
-            type="button"
-            className="agregar-boton"
-            onClick={() => AgregarProducto(producto)}
-          >
-            Agregar
-          </button>
-        </div>
+        <div className="boton-agregar">
+            <button
+              type="button"
+              className="agregar-boton"
+              onClick={() => AgregarProducto(producto)}
+            >
+              Agregar
+            </button>
+          </div>
+
   </tr>
   );
 };

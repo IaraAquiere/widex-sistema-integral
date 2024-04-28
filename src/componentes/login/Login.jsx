@@ -27,6 +27,7 @@ const Login = () => {
       username: usuario,
       password: contraseña,
     });
+
     console.log(raw);
     const requestOptions = {
       method: "POST",
@@ -34,7 +35,9 @@ const Login = () => {
       body: raw,
       redirect: "follow",
     };
+
     SetToken("");
+    
     fetch("http://localhost:5000/User/Login", requestOptions)
       .then((response) => response.text())
       .then((result) => {
