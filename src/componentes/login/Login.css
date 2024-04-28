@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@100;200;300;400;500;600;700;800;900&family=Fjalla+One&family=Inter&family=Noto+Sans:ital,wght@0,300;1,300&family=Roboto+Condensed:wght@246&family=Tajawal:wght@700&display=swap");
+.todo {
+  display: flex;
+  justify-content: space-around;
+  place-items: center;
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+.wrapper {
+  width: 480px;
+  background-color: #accc7b;
+  border-radius: 10px;
+  font-family: "Inter", sans-serif;
+  padding: 3rem;
+  text-align: center;
+  color: rgb(1, 1, 1);
+}
+
+.wrapper h1 {
+  font-size: 50px;
+  color: rgb(8, 7, 7);
+}
+
+.text-login input {
+  width: 90%;
+  height: 90%;
+  border: none;
+  outline: none;
+  border-radius: 26px;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.text-login p {
+  text-align: left;
+  font-size: 18px;
+  padding-left: 15px;
+  padding-top: 10px;
+}
+
+.enlace-button {
+  text-decoration: none;
+  background-color: rgb(173, 105, 16);
+  color: rgb(206, 38, 38);
+  list-style: none;
+}
+
+.boton-iniciar {
+  text-align: center;
+  border: none;
+  width: 220px;
+  height: 45px;
+  background-color: rgb(54, 54, 54);
+  color: white;
+  border-radius: 15px;
+}
