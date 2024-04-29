@@ -18,7 +18,7 @@ const Tabla = (paramProducto) => {
   };
 
   const restar = () => {
-    if (contador > stock) {
+    if (contador > producto.stock) {
       setContador(contador - 1);
     }
   };

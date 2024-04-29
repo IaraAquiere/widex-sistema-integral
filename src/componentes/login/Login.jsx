@@ -45,7 +45,7 @@ const Login = () => {
         if (login.token != undefined) {
           SetToken(login.token);
           console.log(result);
-          navigate("/stock");
+          navigate("/ordenes");
         } else {
           mostrarAlerta();
         }

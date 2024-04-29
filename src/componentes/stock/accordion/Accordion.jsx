@@ -30,7 +30,7 @@ const Accordion = () => {
 
   return (
     <>
-      <div className="accordion-flush-item">
+      <div className="accordion-flush-item mt-4">
         <h2 className="accordion-header">
           <button
             className="accordion-button collapsed"

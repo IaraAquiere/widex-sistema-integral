@@ -2,9 +2,8 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useStore } from "../../store/UseStore";
 import "./NavBar.css";
 
-
 const NavBar = () => {
-  const { SetToken, token } = useStore();
+  const { SetToken } = useStore();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -12,43 +11,73 @@ const NavBar = () => {
     SetToken("");
     navigate("/");
   };
-  return (
+  return location.pathname === "/" ? (
+    <></>
+  ) : (
     <>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar scroll</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarScroll">
-      <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" >
-        <li class="nav-item">
-          <Link to="/stock"> stock</Link>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Link
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <Link to="/" onClick={Logout}>
+      <nav class="navbar navbar-expand-lg  p-3 ">
+        <div class="container-fluid ">
+          <div className="navbar-brand me-auto">
+            <Link to="/ordenes">
+              <img
+                className="img-logo"
+                src="https://www.widex.com.ar/img/widex-dark-gray-logo.png"
+                alt="ogo-widex"
+              />
+            </Link>
+          </div>
+          <div
+            class="offcanvas offcanvas-end"
+            tabindex="-1"
+            id="offcanvasNavbar"
+            aria-labelledby="offcanvasNavbarLabel"
+          >
+            <div class="offcanvas-header">
+              <Link to="/ordenes">
+                <img
+                  className="logo-w"
+                  src="https://www.widex.com.ar/img/widex-dark-gray-logo.png"
+                  alt="ogo-widex"
+                  id="offcanvasNavbarLabel"
+                />
+              </Link>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-center flex-grow-1 ">
+                <li class="nav-item">
+                  <Link className="nav-link" to="/ordenes">
+                    Ordenes
+                  </Link>
+                </li>
+                <li class="nav-item">
+                  <Link className="nav-link" to="/stock">
+                    Stock
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <Link className="logout-button" to="/" onClick={Logout}>
             Logout
           </Link>
-        </li>
-      </ul>
-      
-    </div>
-  </div>
-</nav>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasNavbar"
+            aria-controls="offcanvasNavbar"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </nav>
     </>
   );
 };
