@@ -2,14 +2,24 @@ import { useState } from "react";
 import { useStore } from "../../../store/UseStore";
 
 const Tabla = (paramProducto) => {
-  const { AddProduct, token } = useStore();
+  const { AddProduct } = useStore();
   const [contador, setContador] = useState(0);
   const [producto, setProducto] = useState(paramProducto.paramProducto);
 
   const AgregarProducto = () => {
+    if (producto.stock === 0 ) {
+      alert("No hay stock")
+      return;
+    }if (contador == 0 ){
+      
+      alert("no se encuentra nada en el contador")
+      return;
+    }
     AddProduct({ ...producto, cantidad: contador });
     setContador(0);
   };
+
+  
 
   const sumar = () => {
     if (contador < producto.stock) {
@@ -18,7 +28,7 @@ const Tabla = (paramProducto) => {
   };
 
   const restar = () => {
-    if (contador > producto.stock) {
+    if (contador > producto.stock || contador > 0) {
       setContador(contador - 1);
     }
   };
