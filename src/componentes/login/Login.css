@@ -10,12 +10,12 @@
 
 .wrapper {
   width: 480px;
-  background-color: #accc7b;
+  background-color: #5c83a7;
   border-radius: 10px;
   font-family: "Inter", sans-serif;
   padding: 3rem;
   text-align: center;
-  color: rgb(1, 1, 1);
+  color: rgb(255, 255, 255);
 }
 
 .wrapper h1 {
@@ -52,7 +52,8 @@
   border: none;
   width: 220px;
   height: 45px;
-  background-color: rgb(54, 54, 54);
+  background-color: #20bca0;
   color: white;
   border-radius: 15px;
 }
+

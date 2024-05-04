@@ -14,6 +14,16 @@ export const useStore = create((set, get) => ({
     }));
   },
   Vaciar: () => set(() => ({ items: [] })),
+
+  GetToken: () => {
+    const tk = localStorage.getItem("miToken");
+    const { token, SetToken } = get();
+    if(tk != undefined)
+    {
+      SetToken(tk)
+    }
+    return token;
+  },
   Total: () => {
     const { items } = get();
     if (items.length)

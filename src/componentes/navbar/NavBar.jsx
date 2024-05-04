@@ -1,6 +1,7 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useStore } from "../../store/UseStore";
 import "./NavBar.css";
+import logo from '../../assets/imagenes/widex-logo-solo.png';
 
 const NavBar = () => {
   const { SetToken } = useStore();
@@ -9,6 +10,7 @@ const NavBar = () => {
 
   const Logout = () => {
     SetToken("");
+    localStorage.removeItem("miToken");
     navigate("/");
   };
   return location.pathname === "/" ? (
@@ -20,15 +22,14 @@ const NavBar = () => {
           <div className="navbar-brand me-auto">
             <Link to="/ordenes">
               <img
-                className="img-logo"
-                src="https://www.widex.com.ar/img/widex-dark-gray-logo.png"
-                alt="ogo-widex"
+                className="logo-w"
+                src={logo}
+                alt="logo-widex"
               />
             </Link>
           </div>
           <div
             className="offcanvas offcanvas-end"
-            tabindex="-1"
             id="offcanvasNavbar"
             aria-labelledby="offcanvasNavbarLabel"
           >

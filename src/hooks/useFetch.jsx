@@ -1,47 +1,56 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useStore } from "../store/UseStore";
 
-function useFetch(url,token,tipo,body) {
-  const [data, setData] = useState(null);
+function useFetch(login,usuario,contrasena) {
   const [loading, setLoading] = useState(null);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
+  const { SetToken } = useStore();
 
   useEffect(() => {
+    if(login > 0)
+    {
       setLoading('loading...')
-      setData(null);
       setError(null);
       
       const myHeaders = new Headers();
-      
-      myHeaders.append("Authorization", "Bearer " + token);
-    
-      
-      let requestOptions = {
-        method: tipo,
-        redirect: "follow"
+      myHeaders.append("Content-Type", "application/json");
+  
+      const raw = JSON.stringify({
+        username: usuario,
+        password: contrasena,
+      });
+      console.log(raw)
+      const requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow",
       };
-
-      if(body != '')
-      {
-        const raw = JSON.stringify(body);
-        myHeaders.append("Content-Type", "application/json");
-        
-        requestOptions = {...requestOptions,body : raw, Headers : myHeaders};
-      }
-      
-      fetch(url, requestOptions)
+  
+      fetch("http://localhost:5000/User/Login", requestOptions)
         .then((response) => response.text())
-        .then((res) => {
-            setLoading(false);
-            res.data.content && setData(res.data.content);
-            res.content && setData(res.content);
+        .then((result) => {
+          var login = JSON.parse(result);
+          if (login.token != undefined) {
+            SetToken(login.token)
+            localStorage.setItem("miToken", login.token);
+            navigate("/ordenes")
+          } else {
+            setError("no hay token")
+          }
+          setLoading(null)
         })
         .catch((error) => {
-            setLoading(false)
-            setError(error)
+          setError(error)
+          setLoading(null)
         });
-  }, [body,tipo,url,token])
+      }
+      
+  }, [login])
 
-  return { data, loading, error }
+  return { loading, error }
 }
 
 export default useFetch;

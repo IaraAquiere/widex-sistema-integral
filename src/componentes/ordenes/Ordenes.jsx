@@ -1,6 +1,21 @@
 import Busqueda from "../busqueda/Busqueda";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useStore } from "../../store/UseStore";
+
+
 import "./Ordenes.css";
 const Ordenes = () => {
+  const { GetToken } = useStore();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if(GetToken === "")
+    {
+      navigate("/");
+    }
+  }, []);
+
   return (
     <div className="table-wrapper">
       <Busqueda

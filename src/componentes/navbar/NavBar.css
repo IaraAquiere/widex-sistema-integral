@@ -1,11 +1,16 @@
 .navbar{
-    background-color: #accc7b;
+    background-color: #5c83a7;
     height: 80px;
 
 }
 
+.logo-w{
+    height: 40px;
+    width: 50px;
+}
+
 .logout-button{
-    background-color: rgb(211, 7, 7);
+    background-color: #20bca0;
     color: white;
     font-size: 14px;
     padding: 8px 20px;
@@ -17,7 +22,10 @@
 }    
 
 .logout-button:hover{
-    background-color:rgb(184, 76, 76);
+    border-color: white;
+    color: white;
+    border-width: 2px;
+    border-style: solid;
 }
 
 .navbar-toggler{
@@ -32,7 +40,7 @@
 
 .nav-link{
     position: relative;
-    color: rgb(90, 90, 89);
+    color: white;
     font-weight: 600;
 }
 
@@ -60,16 +68,14 @@
     visibility: visible;
 }
 
-}
 
-.img-logo{
+
+.img-logo {
     width: 115px;
 }
 
-.offcanvas{
+.offcanvas {
     background-color: #accc7b;
 }
 
-.logo-w{
-    width: 95px;
 }

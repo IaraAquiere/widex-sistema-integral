@@ -1,16 +1,19 @@
 import { useStore } from "../../store/UseStore";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Tabla from "./tabla/Tabla";
 import Accordion from "./accordion/Accordion";
 import Busqueda from "../busqueda/Busqueda";
 import "./Stock.css";
 
 const Stock = () => {
-  const { token } = useStore();
+  const { token,GetToken } = useStore();
   const [buscador, setBuscador] = useState("");
   const [productos, setProductos] = useState([]);
 
-  const URL = "http://localhost:5000/api/";
+  const navigate = useNavigate();
+
+  const URL = "http://localhost:5000/";
 
   const showData = async () => {
     const myHeaders = new Headers();
@@ -20,8 +23,8 @@ const Stock = () => {
       headers: myHeaders,
       redirect: "follow",
     };
-
-    fetch("http://localhost:5000/Productos/Listar", requestOptions)
+    console.log(URL + "Productos/Listar");
+    fetch(URL + "Productos/Listar", requestOptions)
       .then((response) => response.text())
       .then((result) => {
         var data = JSON.parse(result);
@@ -41,6 +44,12 @@ const Stock = () => {
       );
 
   useEffect(() => {
+    if(GetToken === "")
+    {
+      console.log(token);
+      navigate("/");
+    }
+
     showData();
   }, []);
 

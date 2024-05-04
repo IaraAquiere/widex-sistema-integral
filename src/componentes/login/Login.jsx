@@ -1,64 +1,25 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useStore } from "../../store/UseStore";
-import Swal from "sweetalert2";
+import { useEffect, useState } from "react";
 import "./Login.css";
+import logoWidex from '../../assets/imagenes/widex-dark-gray-logo.png';
+import useFetch from "../../hooks/useFetch"
+
 
 const Login = () => {
   const [usuario, setUsuario] = useState("Victoria");
   const [contraseña, setContraseña] = useState("123456");
-  const navigate = useNavigate();
-  const { SetToken } = useStore();
+  const [login,setLogin] = useState(0);
 
-  const mostrarAlerta = () => {
-    Swal.fire({
-      position: "top-end",
-      title: "AVISO",
-      text: "usuario y/o contraseña incorrectos",
-      confirmButtonText: "Continuar",
-    });
-  };
+  const { loading, error } = useFetch(login,usuario,contraseña);
 
   const handleSubmit = (e) => {
-    const myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-
-    const raw = JSON.stringify({
-      username: usuario,
-      password: contraseña,
-    });
-
-    console.log(raw);
-    const requestOptions = {
-      method: "POST",
-      headers: myHeaders,
-      body: raw,
-      redirect: "follow",
-    };
-
-    SetToken("");
-    
-    fetch("http://localhost:5000/User/Login", requestOptions)
-      .then((response) => response.text())
-      .then((result) => {
-        var login = JSON.parse(result);
-        if (login.token != undefined) {
-          SetToken(login.token);
-          console.log(result);
-          navigate("/ordenes");
-        } else {
-          mostrarAlerta();
-        }
-      })
-      .catch((error) => console.error(error));
-
+    setLogin(login + 1);
     e.preventDefault();
   };
 
   return (
     <div className="todo">
       <div className="wrapper">
-        <h1>Bienvenidos</h1>
+       <img src={logoWidex} alt="" />
         <form onSubmit={handleSubmit}>
           <div className="text-login">
             <p>Usuario</p>
@@ -69,7 +30,6 @@ const Login = () => {
               required
             />
           </div>
-
           <div className="text-login">
             <p>Contraseña</p>
             <input
@@ -86,6 +46,8 @@ const Login = () => {
               </button>
             </div>
           </div>
+          <p>{loading}</p>
+          <p>{error}</p>
         </form>
       </div>
     </div>

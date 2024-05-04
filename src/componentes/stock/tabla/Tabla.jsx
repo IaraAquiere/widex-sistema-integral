@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useStore } from "../../../store/UseStore";
+import "./Tabla.css";
 
 const Tabla = (paramProducto) => {
   const { AddProduct } = useStore();
@@ -22,13 +23,11 @@ const Tabla = (paramProducto) => {
   
 
   const sumar = () => {
-    if (contador < producto.stock) {
       setContador(contador + 1);
-    }
   };
 
   const restar = () => {
-    if (contador > producto.stock || contador > 0) {
+    if (contador > 0) {
       setContador(contador - 1);
     }
   };
@@ -40,9 +39,9 @@ const Tabla = (paramProducto) => {
       <td>{producto.stock}</td>
       <td>
         <div className="controles">
-          <button onClick={restar}>-</button>
+          <button className="botonesSumaResta" onClick={restar}>-</button>
           <div>{contador}</div>
-          <button onClick={sumar}>+</button>
+          <button className="botonesSumaResta" onClick={sumar}>+</button>
         </div>
       </td>
       <td>
