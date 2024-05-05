@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./Login.css";
 import logoWidex from '../../assets/imagenes/widex-dark-gray-logo.png';
-import useFetch from "../../hooks/useFetch"
+import useLogin from "../../hooks/useLogin";
 
 
 const Login = () => {
@@ -9,7 +9,7 @@ const Login = () => {
   const [contraseña, setContraseña] = useState("123456");
   const [login,setLogin] = useState(0);
 
-  const { loading, error } = useFetch(login,usuario,contraseña);
+  const { cargando, error } = useLogin(login,usuario,contraseña);
 
   const handleSubmit = (e) => {
     setLogin(login + 1);
@@ -46,7 +46,7 @@ const Login = () => {
               </button>
             </div>
           </div>
-          <p>{loading}</p>
+          <p>{cargando}</p>
           <p>{error}</p>
         </form>
       </div>

@@ -2,7 +2,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useStore } from "../../store/UseStore";
 import "./NavBar.css";
 import logo from '../../assets/imagenes/widex-logo-solo.png';
-
+import logo2 from "../../assets/imagenes/widex-dark-gray-logo.png";
 const NavBar = () => {
   const { SetToken } = useStore();
   const navigate = useNavigate();
@@ -29,16 +29,16 @@ const NavBar = () => {
             </Link>
           </div>
           <div
-            className="offcanvas offcanvas-end"
+            className="offcanvas offcanvas-end "
             id="offcanvasNavbar"
             aria-labelledby="offcanvasNavbarLabel"
           >
             <div className="offcanvas-header">
               <Link to="/ordenes">
                 <img
-                  className="logo-w"
-                  src="https://www.widex.com.ar/img/widex-dark-gray-logo.png"
-                  alt="ogo-widex"
+                  className="logo-completo"
+                  src={logo2}
+                  alt="logo-widex"
                   id="offcanvasNavbarLabel"
                 />
               </Link>
@@ -65,7 +65,7 @@ const NavBar = () => {
             </div>
           </div>
           <Link className="logout-button" to="/" onClick={Logout}>
-            Logout
+            Cerrar sesion
           </Link>
           <button
             className="navbar-toggler"
@@ -75,7 +75,7 @@ const NavBar = () => {
             aria-controls="offcanvasNavbar"
             aria-label="Toggle navigation"
           >
-            <span className="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon "></span>
           </button>
         </div>
       </nav>

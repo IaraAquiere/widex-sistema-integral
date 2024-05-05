@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useStore } from "../store/UseStore";
 
-function useFetch(login,usuario,contrasena) {
-  const [loading, setLoading] = useState(null);
+function useLogin(login,usuario,contrasena) {
+  const [cargando, setCargando] = useState(null);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
   const { SetToken } = useStore();
@@ -11,7 +11,7 @@ function useFetch(login,usuario,contrasena) {
   useEffect(() => {
     if(login > 0)
     {
-      setLoading('loading...')
+      setCargando('cargando...')
       setError(null);
       
       const myHeaders = new Headers();
@@ -40,17 +40,17 @@ function useFetch(login,usuario,contrasena) {
           } else {
             setError("no hay token")
           }
-          setLoading(null)
+          setCargando(null)
         })
         .catch((error) => {
           setError(error)
-          setLoading(null)
+          setCargando(null)
         });
       }
       
   }, [login])
 
-  return { loading, error }
+  return { cargando, error }
 }
 
-export default useFetch;
+export default useLogin;
