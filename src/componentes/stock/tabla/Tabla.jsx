@@ -8,10 +8,7 @@ const Tabla = (paramProducto) => {
   const [producto, setProducto] = useState(paramProducto.paramProducto);
 
   const AgregarProducto = () => {
-    if (producto.stock === 0 ) {
-      alert("No hay stock")
-      return;
-    }if (contador == 0 ){
+    if (contador == 0 ){
       
       alert("no se encuentra nada en el contador")
       return;
