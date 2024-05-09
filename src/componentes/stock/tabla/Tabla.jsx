@@ -2,22 +2,22 @@ import { useState } from "react";
 import { useStore } from "../../../store/UseStore";
 import "./Tabla.css";
 
+
 const Tabla = (paramProducto) => {
-  const { AddProduct } = useStore();
+  const { AddProduct} = useStore();
   const [contador, setContador] = useState(0);
   const [producto, setProducto] = useState(paramProducto.paramProducto);
 
+
   const AgregarProducto = () => {
-    if (contador == 0 ){
-      
-      alert("no se encuentra nada en el contador")
+    if (contador === 0) {
+      alert("No se puede agregar un producto con cantidad 0");
       return;
     }
+
     AddProduct({ ...producto, cantidad: contador });
     setContador(0);
   };
-
-  
 
   const sumar = () => {
       setContador(contador + 1);
