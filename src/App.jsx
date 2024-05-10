@@ -3,6 +3,8 @@ import Login from "./componentes/login/Login.jsx";
 import Stock from "./componentes/stock/Stock.jsx";
 import NavBar from "./componentes/navbar/NavBar.jsx";
 import Ordenes from "./componentes/ordenes/Ordenes.jsx"
+import Permisos from "./componentes/permisos/Permisos.jsx"
+
 import "./App.css";
 
 
@@ -15,6 +17,7 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/stock" element={<Stock />} />
         <Route path="/ordenes" element={<Ordenes/>} />
+        <Route path="/permisos" element={<Permisos />} />
       </Routes>
     </BrowserRouter>
   );
