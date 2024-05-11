@@ -6,9 +6,6 @@ import Ordenes from "./componentes/ordenes/Ordenes.jsx"
 import Permisos from "./componentes/permisos/Permisos.jsx"
 
 import "./App.css";
-
-
-
 function App() {
   return (
     <BrowserRouter>
