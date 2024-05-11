@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useStore } from "../../../store/useStore";
-import "./Tabla.css";
+import "./Producto.css";
 
 
-const Tabla = (paramProducto) => {
+const Producto = (paramProducto) => {
   const { AddProduct} = useStore();
   const [contador, setContador] = useState(0);
   const [producto, setProducto] = useState(paramProducto.paramProducto);
@@ -56,4 +56,4 @@ const Tabla = (paramProducto) => {
   );
 };
 
-export default Tabla;
+export default Producto;

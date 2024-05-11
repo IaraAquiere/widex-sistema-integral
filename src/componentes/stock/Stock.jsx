@@ -1,8 +1,8 @@
 import { useStore } from "../../store/useStore";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Tabla from "./tabla/Tabla";
-import Accordion from "./accordion/Accordion";
+import Producto from "./Producto/Producto";
+import OrdenStock from "./OrdenStock/OrdenStock";
 import Busqueda from "../busqueda/Busqueda";
 import "./Stock.css";
 
@@ -46,7 +46,7 @@ const Stock = () => {
   useEffect(() => {
     if(GetToken() === "")
     {
-      console.log(token);
+      console.log(GetToken())
       navigate("/");
     }
 
@@ -57,7 +57,7 @@ const Stock = () => {
     <div className="container">
       <div className=" accordion   p-3" id="accordionFlushExample">
         {/* accordion */}
-        <Accordion />
+        <OrdenStock />
         {/* busqueda de productos */}
         <Busqueda
           className1="d-flex flex-row justify-content-center m-4"
@@ -81,7 +81,7 @@ const Stock = () => {
           </thead>
           <tbody className="table-group-divider" >
             {resultado.map((producto) => (
-              <Tabla paramProducto={producto} />
+              <Producto paramProducto={producto} />
             ))}
           </tbody>
         </table>

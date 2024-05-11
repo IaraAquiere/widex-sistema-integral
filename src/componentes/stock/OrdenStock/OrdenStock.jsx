@@ -1,9 +1,9 @@
 import { useStore } from "../../../store/useStore";
 import { CgTrash, CgCloseR, CgFileDocument } from "react-icons/cg";
 import { useNavigate } from "react-router-dom";
-import "./Accordion.css";
+import "./OrdenStock.css";
 
-const Accordion = () => {
+const OrdenStock = () => {
   const { items, Delete, Vaciar, Total,token } = useStore();
   const navigate = useNavigate();
 
@@ -162,4 +162,4 @@ var ordenWeb = {
   );
 };
 
-export default Accordion;
+export default OrdenStock;
