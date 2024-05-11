@@ -40,7 +40,7 @@ const Ordenes = () => {
           <tbody className="table-group-divider">
           
           {cargando ?? data.map((orden) => (
-            <tr>
+            <tr key ={orden.Id}>
               <td>{orden.nrO_PEDIDO}</td>
               <td colSpan="2">{orden.tipo}</td>
               <td colSpan="2">{orden.razoN_SOCI}</td>

@@ -14,7 +14,17 @@ const Accordion = () => {
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append("Authorization", "Bearer " + token);
     
-    const raw = JSON.stringify(items);
+var ordenWeb = {
+  Items : items,
+  Leyenda_1:document.getElementById("Leyenda_1").value,
+  Leyenda_2:document.getElementById("Leyenda_2").value,
+  Leyenda_3:document.getElementById("Leyenda_3").value,
+  Leyenda_4:document.getElementById("Leyenda_4").value,
+  Leyenda_5:document.getElementById("Leyenda_5").value
+
+}
+
+    const raw = JSON.stringify(ordenWeb);
     
     const requestOptions = {
       method: "POST",
@@ -92,32 +102,37 @@ const Accordion = () => {
             <div className=" row ">
               <div className="col-4">
                 <input
+                  id= "Leyenda_1"
                   placeholder="Leyenda 1"
-                  name="leyenda"
+                  name="leyenda1"
                   type="text"
                   className="my-2 form-control"
                 />
                 <input
+                id= "Leyenda_2"
                   placeholder="Leyenda 2"
-                  name="leyenda"
+                  name="leyenda2"
                   type="text"
                   className="my-2 form-control"
                 />
                 <input
+                id= "Leyenda_3"
                   placeholder="Leyenda 3"
-                  name="leyenda"
+                  name="leyenda3"
                   type="text"
                   className="my-2 form-control"
                 />
                 <input
+                id= "Leyenda_4"
                   placeholder="Leyenda 4"
-                  name="leyenda"
+                  name="leyenda4"
                   type="text"
                   className="my-2 form-control"
                 />
                 <input
+                id= "Leyenda_5"
                   placeholder="Leyenda 5"
-                  name="leyenda"
+                  name="leyenda5"
                   type="text"
                   className="my-2 form-control"
                 />
