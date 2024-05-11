@@ -1,13 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Login.css";
 import logoWidex from '../../assets/imagenes/widex-dark-gray-logo.png';
 import useLogin from "../../hooks/useLogin";
+import { useNavigate } from "react-router-dom";
 
+import { useStore } from "../../store/useStore";
 
 const Login = () => {
   const [usuario, setUsuario] = useState("Victoria");
   const [contraseña, setContraseña] = useState("123456");
   const [login,setLogin] = useState(0);
+  const { GetToken } =  useStore();
+  const navigate = useNavigate();
 
   const { cargando, error } = useLogin(login,usuario,contraseña);
 
@@ -15,6 +19,13 @@ const Login = () => {
     setLogin(login + 1);
     e.preventDefault();
   };
+
+  useEffect(() => {
+    if(GetToken() !== "")
+    {
+      navigate("/ordenes");
+    }
+  }, []);
 
   return (
     <div className="todo">

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useStore } from "../store/UseStore";
+import { useStore } from "../store/useStore";
 
 function useLogin(login,usuario,contrasena) {
   const [cargando, setCargando] = useState(null);

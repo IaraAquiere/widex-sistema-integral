@@ -1,9 +1,11 @@
-import { useStore } from "../../../store/UseStore";
+import { useStore } from "../../../store/useStore";
 import { CgTrash, CgCloseR, CgFileDocument } from "react-icons/cg";
+import { useNavigate } from "react-router-dom";
 import "./Accordion.css";
 
 const Accordion = () => {
   const { items, Delete, Vaciar, Total,token } = useStore();
+  const navigate = useNavigate();
 
   const GuardarOrden = () => {
     console.log(JSON.stringify(items));
@@ -23,8 +25,14 @@ const Accordion = () => {
     
     fetch("http://localhost:5000/Stock/GuardarOrden", requestOptions)
       .then((response) => response.text())
-      .then((result) => alert(result))
+      .then((result) => {
+        alert(result)
+        Vaciar()
+        navigate("/ordenes")
+      }       
+      )
       .catch((error) => console.error(error));
+
   
   };
 

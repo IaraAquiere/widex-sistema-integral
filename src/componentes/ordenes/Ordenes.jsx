@@ -1,16 +1,17 @@
 import Busqueda from "../busqueda/Busqueda";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useStore } from "../../store/UseStore";
-
+import { useStore } from "../../store/useStore";
+import  useStock from "../../hooks/useStock";
 
 import "./Ordenes.css";
 const Ordenes = () => {
   const { GetToken } = useStore();
   const navigate = useNavigate();
-
+  const { data, cargando } = useStock();
+  
   useEffect(() => {
-    if(GetToken === "")
+    if(GetToken() === "")
     {
       navigate("/");
     }
@@ -37,15 +38,18 @@ const Ordenes = () => {
             </tr>
           </thead>
           <tbody className="table-group-divider">
+          
+          {cargando ?? data.map((orden) => (
             <tr>
-              <td>1256</td>
-              <td colSpan="2">hola como va</td>
-              <td colSpan="2"> victoria aquiere</td>
-              <td>13/07/2023</td>
-              <td>Ingresado</td>
-              <td>23452</td>
-              <td>00000000045</td>
+              <td>{orden.nrO_PEDIDO}</td>
+              <td colSpan="2">{orden.tipo}</td>
+              <td colSpan="2">{orden.razoN_SOCI}</td>
+              <td>{orden.fechA_PEDI}</td>
+              <td>{orden.estado}</td>
+              <td></td>
+              <td></td>
             </tr>
+          ))}
           </tbody>
         </table>
       </div>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useStore } from "../../../store/UseStore";
+import { useStore } from "../../../store/useStore";
 import "./Tabla.css";
 
 

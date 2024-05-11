@@ -1,4 +1,4 @@
-import { useStore } from "../../store/UseStore";
+import { useStore } from "../../store/useStore";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Tabla from "./tabla/Tabla";
@@ -44,7 +44,7 @@ const Stock = () => {
       );
 
   useEffect(() => {
-    if(GetToken === "")
+    if(GetToken() === "")
     {
       console.log(token);
       navigate("/");

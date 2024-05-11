@@ -1,14 +1,21 @@
 import { useEffect, useState } from "react";
 import Busqueda from "../busqueda/Busqueda";
 import data from "../../Mocks/PermisosMock";
-
+import { useNavigate } from "react-router-dom";
+import { useStore } from "../../store/useStore";
 
 const Permisos = () => {
   const [permisos, setPermisos] = useState([]);
   const [buscador, setBuscador] = useState("");
+  const navigate = useNavigate();
+  const { GetToken } = useStore();
 
-  useEffect(() => { 
-      setPermisos(data);
+  useEffect(() => {
+    if(GetToken() === "")
+    {
+      navigate("/");
+    }
+    setPermisos(data);
   }, []);
 
   const busquedaPermisos = (e) => {
