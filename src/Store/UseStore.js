@@ -6,8 +6,21 @@ export const useStore = create((set, get) => ({
   token: "",
   inc: () => set((state) => ({ count: state.count + 1 })),
   SetToken: (tk) => set(() => ({ token: tk })),
-  AddProduct: (producto) =>
-    set((state) => ({ items: [...state.items, producto] })),
+  AddProduct: (producto) =>{
+    const { items } = get();
+
+    const indice = items.findIndex(item => item.id == producto.id )
+
+    if(indice > -1)
+    {
+        const newItems = items;
+        newItems[indice] = {...newItems[indice], cantidad: newItems[indice].cantidad + producto.cantidad}
+        set(newItems)
+    } else
+    {
+      set((state) => ({items: [...state.items, producto] }))
+    }
+  },
   Delete: (producto) => {
     set((state) => ({
       items: state.items.filter((item) => item.id !== producto.id),
