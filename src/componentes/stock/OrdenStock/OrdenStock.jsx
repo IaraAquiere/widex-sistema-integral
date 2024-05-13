@@ -1,4 +1,4 @@
-import { useStore } from "../../../store/useStore";
+import { useStore } from "../../../store/UseStore";
 import { CgTrash, CgCloseR, CgFileDocument } from "react-icons/cg";
 import { useNavigate } from "react-router-dom";
 import "./OrdenStock.css";

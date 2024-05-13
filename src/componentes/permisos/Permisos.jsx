@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Busqueda from "../busqueda/Busqueda";
 import data from "../../Mocks/PermisosMock";
 import { useNavigate } from "react-router-dom";
-import { useStore } from "../../store/useStore";
+import { useStore } from "../../store/UseStore";
 
 const Permisos = () => {
   const [permisos, setPermisos] = useState([]);

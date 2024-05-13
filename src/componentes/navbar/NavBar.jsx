@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useStore } from "../../store/useStore";
+import { useStore } from "../../store/UseStore";
 import "./NavBar.css";
 import logo from '../../assets/imagenes/widex-logo-solo.png';
 import logo2 from "../../assets/imagenes/widex-dark-gray-logo.png";

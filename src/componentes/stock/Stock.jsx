@@ -1,4 +1,4 @@
-import { useStore } from "../../store/useStore";
+import { useStore } from "../../store/UseStore";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Producto from "./Producto/Producto";

@@ -4,7 +4,7 @@ import logoWidex from '../../assets/imagenes/widex-dark-gray-logo.png';
 import useLogin from "../../hooks/useLogin";
 import { useNavigate } from "react-router-dom";
 
-import { useStore } from "../../store/useStore";
+import { useStore } from "../../store/UseStore";
 
 const Login = () => {
   const [usuario, setUsuario] = useState("Victoria");
