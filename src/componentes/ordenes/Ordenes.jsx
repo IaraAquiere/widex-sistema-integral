@@ -1,5 +1,5 @@
 import Busqueda from "../busqueda/Busqueda";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useStore } from "../../store/UseStore";
 import  useStock from "../../hooks/useStock";
@@ -9,6 +9,17 @@ const Ordenes = () => {
   const { GetToken } = useStore();
   const navigate = useNavigate();
   const { data, cargando } = useStock();
+  const [buscar, setBuscar] = useState("");
+
+  const productoBusqueda= (e) => {
+    setBuscar(e.target.value);
+  };
+
+  const resultado = !buscar
+    ? data
+    : data.filter((dato) =>
+        dato.razoN_SOCI.toLowerCase().includes(buscar.toLocaleLowerCase())
+      );
   
   useEffect(() => {
     if(GetToken() === "")
@@ -23,6 +34,8 @@ const Ordenes = () => {
         className1="d-flex flex-row justify-content-center m-3"
         className2="form-control form-control-lg border border-dark-subtle w-50  "
         placeholder="Buscar Orden"
+        onChange={productoBusqueda}
+          value={buscar}
       />
       <div className="tabla-busqueda">
         <table className="table table-hover table-bordered ">
@@ -38,18 +51,22 @@ const Ordenes = () => {
             </tr>
           </thead>
           <tbody className="table-group-divider">
-          
-          {cargando ?? data.map((orden) => (
-            <tr key ={orden.Id}>
-              <td>{orden.nrO_PEDIDO}</td>
-              <td colSpan="2">{orden.tipo}</td>
-              <td colSpan="2">{orden.razoN_SOCI}</td>
-              <td>{orden.fechA_PEDI}</td>
-              <td>{orden.estado}</td>
-              <td></td>
-              <td></td>
-            </tr>
-          ))}
+          {resultado.length === 0 ? (
+              <div className="d-flex justify-cotents-center">
+                <p>No se encontro ningun pedido</p>
+              </div>
+            ) : (
+              cargando ??
+              resultado.map((orden) => (
+                <tr key={orden.Id}>
+                  <td>{orden.nrO_PEDIDO}</td>
+                  <td colSpan="2">{orden.tipo}</td>
+                  <td colSpan="2">{orden.razoN_SOCI}</td>
+                  <td>{orden.fechA_PEDI}</td>
+                  <td>{orden.estado}</td>
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </div>
