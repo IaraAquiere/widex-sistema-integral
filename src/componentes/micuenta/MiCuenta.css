@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@100;200;300;400;500;600;700;800;900&family=Fjalla+One&family=Inter&family=Noto+Sans:ital,wght@0,300;1,300&family=Radio+Canada+Big:wght@500&family=Roboto+Condensed:wght@246&family=Tajawal:wght@700&display=swap');
+
+#root{
+    font-family: "Radio Canada Big", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+
+.estado{
+    display: flex;
+    justify-content: end;
+    font-size:large;
+}
+
+

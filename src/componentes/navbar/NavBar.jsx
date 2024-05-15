@@ -66,6 +66,11 @@ const NavBar = () => {
                     Permisos
                   </Link>
                 </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/micuenta">
+                    Mi Cuenta
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
