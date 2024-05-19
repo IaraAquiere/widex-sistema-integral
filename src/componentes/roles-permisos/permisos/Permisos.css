@@ -1,0 +1,48 @@
+.roles{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 20px;
+}
+
+.form-control{
+    width: 400px;
+}
+
+.buscador{
+    padding-right: 20px;
+}
+
+.boton-buscar{
+        width: 100px;
+        height: 35px;
+        font-size: small;
+        background-color: #313131;
+        color: white;
+        border: 10px;
+        border-radius: 4px;
+}
+
+.boton-guardar-rol{
+    width: 100px;
+        height: 35px;
+        font-size: small;
+        background-color: #313131;
+        color: white;
+        border: 10px;
+        border-radius: 4px;
+}
+
+.boton-guardar{
+    padding-right: 15px;
+}
+
+.guardar-permisos{
+    padding-right: 110px;
+}
+
+.btn{
+    width: 150px;
+    padding: 8px;
+}

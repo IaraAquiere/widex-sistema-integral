@@ -67,6 +67,11 @@ const NavBar = () => {
                   </Link>
                 </li>
                 <li className="nav-item">
+                  <Link className="nav-link" to="/cambiorol">
+                    Cambiar Rol
+                  </Link>
+                </li>
+                <li className="nav-item">
                   <Link className="nav-link" to="/micuenta">
                     Mi Cuenta
                   </Link>
