@@ -1,6 +1,27 @@
+import { useStore } from "../../../store/UseStore";
 
 
 const CambiarRol = () => {
+  const {token, GetToken} = useStore();
+
+
+  const URL = "http://localhost:5000/";
+
+  const myHeaders = new Headers();
+  myHeaders.append("Authorization", "Bearer" + token);
+  const requestOptions = {
+    method: "GET",
+    headers: myHeaders,
+    redirect: "follow",
+  };
+  console.log(URL + "Productos/Listar");
+  fetch("localhost:5000/Permisos/ListarRoles", requestOptions)
+    .then((response) => response.text())
+    .then((result) => console.log(result))
+    .catch((error) => console.error(error));
+
+    console.log(token);
+
   return (
     <>
       <div
@@ -24,7 +45,10 @@ const CambiarRol = () => {
               ></button>
             </div>
             <div className="modal-body">
-              <select className="form-select" aria-label="Multiple select example">
+              <select
+                className="form-select"
+                aria-label="Multiple select example"
+              >
                 <option selected>Seleccionar un Rol</option>
                 <option select>Fonoudiologas</option>
                 <option select>Sucursales</option>
@@ -36,9 +60,7 @@ const CambiarRol = () => {
                 Guardar
               </button>
 
-              <button className="btn btn-success">
-                Crear nuevo Rol
-              </button>
+              <button className="btn btn-success">Crear nuevo Rol</button>
             </div>
           </div>
         </div>

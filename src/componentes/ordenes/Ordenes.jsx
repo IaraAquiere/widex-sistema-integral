@@ -6,7 +6,7 @@ import  useStock from "../../hooks/useStock";
 
 import "./Ordenes.css";
 const Ordenes = () => {
-  const { GetToken } = useStore();
+  const { token, GetToken } = useStore();
   const navigate = useNavigate();
   const { data, cargando } = useStock();
   const [buscar, setBuscar] = useState("");
@@ -27,6 +27,7 @@ const Ordenes = () => {
       navigate("/");
     }
   }, []);
+
 
   return (
     <div className="table-wrapper">

@@ -12,6 +12,9 @@ const Permisos = () => {
   const navigate = useNavigate();
   const { GetToken } = useStore();
 
+
+  
+
   useEffect(() => {
     if (GetToken() === "") {
       navigate("/");
