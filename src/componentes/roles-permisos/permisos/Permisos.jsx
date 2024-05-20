@@ -4,16 +4,14 @@ import data from "../../../Mocks/PermisosMock";
 import { useNavigate } from "react-router-dom";
 import { useStore } from "../../../store/UseStore";
 
-import "./Permisos.css"
+import "./Permisos.css";
+import CambiarRol from "../cambiarRol/CambiarRol";
 
 const Permisos = () => {
   const [permisos, setPermisos] = useState([]);
   const [buscador, setBuscador] = useState("");
   const navigate = useNavigate();
   const { GetToken } = useStore();
-
-
-  
 
   useEffect(() => {
     if (GetToken() === "") {
@@ -30,7 +28,6 @@ const Permisos = () => {
     ? permisos
     : permisos.filter(
         (data) =>
-          data.NOMBRE_PERMISO &&
           data.NOMBRE_PERMISO.toLowerCase().includes(
             buscador.toLocaleLowerCase()
           )
@@ -47,19 +44,23 @@ const Permisos = () => {
     <>
       <div className="roles">
         <div className="buscador">
-        <input
-          type="search"
-          className="form-control form-controlborder border-dark-subtle "
-          id="exampleFormControlInput1"
-          placeholder="ROL"
-        />
+          <input
+            type="search"
+            className="form-control form-controlborder border-dark-subtle "
+            id="exampleFormControlInput1"
+            placeholder="Escribir nuevo rol o buscar existente"
+          />
         </div>
-        <div className="boton-guardar">
-        <button className="boton-guardar-rol">Guardar Rol</button>
-        </div>
- 
-        <button className="boton-buscar">Buscar</button>
-     </div>
+        <button
+          type="button"
+          className="boton-buscar"
+          data-bs-toggle="modal"
+          data-bs-target="#staticBackdrop"
+        >
+          Buscar
+        </button>
+      </div>
+      <CambiarRol boton1="Cerrar" boton2="Agregar" cerrarModal="modal" />
 
       <Busqueda
         className1="d-flex flex-row justify-content-center m-3"
@@ -100,7 +101,7 @@ const Permisos = () => {
       </div>
       <div className="d-flex justify-content-end">
         <div className="guardar-permisos">
-        <button className="btn btn-success">Guardar</button>
+          <button className="btn btn-success">Guardar</button>
         </div>
       </div>
     </>

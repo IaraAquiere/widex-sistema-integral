@@ -1,38 +1,48 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useStore } from "../../../store/UseStore";
 import Busqueda from "../../busqueda/Busqueda";
 import CambiarRol from "../cambiarRol/CambiarRol";
 import "./ListaUsuarios.css";
 const ListaUsuarios = () => {
   const { token } = useStore();
-  const [listarUsuarios, setListarUsuarios] = useState([]);
+  const [usuariosl, setUsuariosl] = useState([]);
   const [buscar, setBuscar] = useState("");
 
-  const myHeaders = new Headers();
-  myHeaders.append("Authorization", "Bearer" + token);
-
-  const requestOptions = {
-    method: "GET",
-    headers: myHeaders,
-    redirect: "follow",
+  const listarUsuarios = async () => {
+    try {
+      const respuestaUsuarios = await fetch(
+        "http://localhost:5000/Permisos/ListarUsuarios",
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      if (!respuestaUsuarios) {
+        throw new Error("Error de red");
+      }
+      const datosUsuarios = await respuestaUsuarios.json();
+      setUsuariosl(datosUsuarios);
+    } catch (error) {
+      console.error("error");
+    }
   };
 
-  fetch("localhost:5000/Permisos/ListarUsuarios", requestOptions)
-    .then((response) => response.text())
-    .then((result) => {
-      setListarUsuarios(JSON.parse(result));
-    })
-    .catch((error) => console.error(error));
+  useEffect(() => {
+    listarUsuarios();
+  }, []);
 
   const busquedaUsuarios = (e) => {
     setBuscar(e.target.value);
   };
 
-  const listar = !buscar
-    ? listarUsuarios
-    : listarUsuarios.filter((dato) =>
-        dato.usuario.toLowerCase().includes(buscar.toLocaleLowerCase())
+  const listarBusqueda = !buscar
+    ? usuariosl
+    : usuariosl.filter((data) =>
+        data.usuarios.toLowerCase().includes(buscar.toLocaleLowerCase())
       );
+
   return (
     <>
       <Busqueda
@@ -53,7 +63,7 @@ const ListaUsuarios = () => {
             </tr>
           </thead>
           <tbody className="table-group-divider">
-            {listar.map((usuarios) => (
+            {listarBusqueda.map((usuarios) => (
               <tr>
                 <td>{usuarios.usuario}</td>
                 <td>{usuarios.nombre_rol}</td>
@@ -64,12 +74,13 @@ const ListaUsuarios = () => {
                         type="button"
                         className="cambiar"
                         data-bs-toggle="modal"
-                        data-bs-target="#exampleModal"
+                        data-bs-target="#staticBackdrop"
+
                       >
                         Cambiar Rol
                       </button>
                     </div>
-                    <CambiarRol />
+                    <CambiarRol boton1="Guardar" boton2="Crear Nuevo Rol" />
                     <div className="cambiar-contraseña">
                       <button type="button" className="cambiar">
                         Cambiar Con
