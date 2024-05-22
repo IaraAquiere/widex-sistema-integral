@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useStore } from "../../../store/UseStore";
 
-const CambiarRol = ({ boton1, boton2, cerrarModal}) => {
+const CambiarRol = ({ boton1, boton2, cerrarModal1, cerrarModal2, onclick}) => {
   const { token } = useStore();
   const [roles, setRoles] = useState([]);
   const [rolSeleccionado, setRolSeleccionado] = useState("");
@@ -76,11 +76,11 @@ const CambiarRol = ({ boton1, boton2, cerrarModal}) => {
               <button
                 type="button"
                 class="btn btn-secondary"
-                data-bs-dismiss={cerrarModal}
+                data-bs-dismiss={cerrarModal1}
               >
                 {boton1}
               </button>
-              <button type="button" class="btn btn-primary" >
+              <button type="button" class="btn btn-primary" onClick={onclick} data-bs-dismiss={cerrarModal2}>
                 {boton2}
               </button>
             </div>

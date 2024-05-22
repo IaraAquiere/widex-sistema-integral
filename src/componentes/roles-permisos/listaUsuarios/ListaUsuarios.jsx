@@ -3,11 +3,12 @@ import { useStore } from "../../../store/UseStore";
 import Busqueda from "../../busqueda/Busqueda";
 import CambiarRol from "../cambiarRol/CambiarRol";
 import "./ListaUsuarios.css";
-const ListaUsuarios = () => {
+import { useNavigate } from "react-router-dom";
+const ListaUsuarios = (props) => {
   const { token } = useStore();
   const [usuariosl, setUsuariosl] = useState([]);
   const [buscar, setBuscar] = useState("");
-
+  const navigate = useNavigate();
   const listarUsuarios = async () => {
     try {
       const respuestaUsuarios = await fetch(
@@ -42,6 +43,15 @@ const ListaUsuarios = () => {
     : usuariosl.filter((data) =>
         data.usuarios.toLowerCase().includes(buscar.toLocaleLowerCase())
       );
+
+     
+
+      const handlePermisos = () => {
+
+         
+          navigate("/permisos")
+      }
+  
 
   return (
     <>
@@ -80,7 +90,7 @@ const ListaUsuarios = () => {
                         Cambiar Rol
                       </button>
                     </div>
-                    <CambiarRol boton1="Guardar" boton2="Crear Nuevo Rol" />
+                    <CambiarRol boton1="Guardar" boton2="Crear Nuevo Rol" onclick={handlePermisos} cerrarModal2="modal" />
                     <div className="cambiar-contraseña">
                       <button type="button" className="cambiar">
                         Cambiar Con

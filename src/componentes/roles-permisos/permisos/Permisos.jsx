@@ -60,7 +60,7 @@ const Permisos = () => {
           Buscar
         </button>
       </div>
-      <CambiarRol boton1="Cerrar" boton2="Agregar" cerrarModal="modal" />
+      <CambiarRol boton1="Cerrar" boton2="Agregar" cerrarModal="modal" cerrarModal1="modal" />
 
       <Busqueda
         className1="d-flex flex-row justify-content-center m-3"
