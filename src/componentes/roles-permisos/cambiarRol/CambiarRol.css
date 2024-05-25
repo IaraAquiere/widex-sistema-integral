@@ -1,23 +1,21 @@
 .titulo{
-  font-size: large;
-  margin: 20px;
-  padding-left: 90px ;
-  display: flex;
-  justify-content: flex-start;
+    font-size: large;
+    margin: 20px;
+    padding-left: 90px ;
+    display: flex;
+    justify-content: flex-start;
 }
 
-
-.cambiar {
+.btn {
     width: 100px;
     height: 30px;
     font-size: small;
-    background-color:#20bca0 ;
     color: white;
     border: 10px;
     border-radius: 4px;
   }
 
-  .acomodar-borones{
+  .acomodar{
     display: flex;
     justify-content: space-evenly;
 

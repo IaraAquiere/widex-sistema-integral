@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useStore } from "../../../store/UseStore";
 import Busqueda from "../../busqueda/Busqueda";
-import CambiarRol from "../cambiarRol/CambiarRol";
 import "./ListaUsuarios.css";
 import { useNavigate } from "react-router-dom";
 const ListaUsuarios = (props) => {
@@ -52,9 +51,12 @@ const ListaUsuarios = (props) => {
 
   return (
     <>
+    <div className="titulo">
+      <h1>Lista de Usuarios</h1>
+    </div>
       <Busqueda
         className1="d-flex flex-row justify-content-center m-3"
-        className2="form-control form-control-lg border border-dark-subtle w-50  "
+        className2="form-control form-control-lg border border-dark-subtle w-30  "
         placeholder="Buscar usuario"
         onChange={busquedaUsuarios}
         value={buscar}
@@ -63,8 +65,8 @@ const ListaUsuarios = (props) => {
         <table className="table table-hover  ">
           <thead>
             <tr>
-              <th>Nombre usuario</th>
-              <th>Rol</th>
+              <th></th>
+              <th></th>
               <th></th>
               <th></th>
             </tr>
