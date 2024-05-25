@@ -6,7 +6,7 @@ function useLogin(login,usuario,contrasena) {
   const [cargando, setCargando] = useState(null);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-  const { SetToken } = useStore();
+  const { SetToken,SetRol } = useStore();
 
   useEffect(() => {
     if(login > 0)
@@ -34,7 +34,9 @@ function useLogin(login,usuario,contrasena) {
         .then((result) => {
           var login = JSON.parse(result);
           if (login.token != undefined) {
+            console.log(login);
             SetToken(login.token)
+            SetRol(login.rol);
             localStorage.setItem("miToken", login.token);
             navigate("/ordenes")
           } else {

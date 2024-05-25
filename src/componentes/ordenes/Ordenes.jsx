@@ -2,13 +2,13 @@ import Busqueda from "../busqueda/Busqueda";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useStore } from "../../store/UseStore";
-import  useStock from "../../hooks/useStock";
+import  UseStock from "../../hooks/useStock";
 
 import "./Ordenes.css";
 const Ordenes = () => {
-  const { token, GetToken } = useStore();
+  const { token, GetToken, GetPermiso } = useStore();
   const navigate = useNavigate();
-  const { data, cargando } = useStock();
+  const { data, cargando } = UseStock();
   const [buscar, setBuscar] = useState("");
 
   const productoBusqueda= (e) => {
@@ -19,6 +19,7 @@ const Ordenes = () => {
     ? data
     : data.filter((dato) =>
         dato.razoN_SOCI.toLowerCase().includes(buscar.toLocaleLowerCase())
+        || dato.fechA_PEDI.includes(buscar)
       );
   
   useEffect(() => {
@@ -26,6 +27,7 @@ const Ordenes = () => {
     {
       navigate("/");
     }
+    GetPermiso("/STOCK/ARTICULOS/COSELGI")
   }, []);
 
 
@@ -59,7 +61,7 @@ const Ordenes = () => {
             ) : (
               cargando ??
               resultado.map((orden) => (
-                <tr key={orden.Id}>
+                <tr key={orden.id}>
                   <td>{orden.nrO_PEDIDO}</td>
                   <td colSpan="2">{orden.tipo}</td>
                   <td colSpan="2">{orden.razoN_SOCI}</td>

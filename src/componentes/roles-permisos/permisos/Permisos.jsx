@@ -7,7 +7,7 @@ import { useStore } from "../../../store/UseStore";
 import "./Permisos.css";
 import CambiarRol from "../cambiarRol/CambiarRol";
 
-const Permisos = () => {
+const Permisos = (id_rol) => {
   const [permisos, setPermisos] = useState([]);
   const [buscador, setBuscador] = useState("");
   const navigate = useNavigate();
@@ -42,25 +42,11 @@ const Permisos = () => {
 
   return (
     <>
-      <div className="roles">
-        <div className="buscador">
-          <input
-            type="search"
-            className="form-control form-controlborder border-dark-subtle "
-            id="exampleFormControlInput1"
-            placeholder="Escribir nuevo rol o buscar existente"
-          />
-        </div>
-        <button
-          type="button"
-          className="boton-buscar"
-          data-bs-toggle="modal"
-          data-bs-target="#staticBackdrop"
-        >
-          Buscar
-        </button>
+      {id_rol == 0  ? 
+       <div>
+        <p>Nombre Rol:</p> <input type="text" />
       </div>
-      <CambiarRol boton1="Cerrar" boton2="Agregar" cerrarModal="modal" cerrarModal1="modal" />
+      : <div></div>}
 
       <Busqueda
         className1="d-flex flex-row justify-content-center m-3"
