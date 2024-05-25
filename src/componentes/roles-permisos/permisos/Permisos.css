@@ -33,3 +33,26 @@
     width: 150px;
     padding: 8px;
 }
+
+.nuevo-rol{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px;
+}
+
+.nuevo-titulo{
+    font-size: 15px;
+    
+}
+
+
+
+.titulo-nombre{
+    padding-right: 15px;
+}
+
+.input-nombre{
+    padding-left: 15px;
+}
