@@ -40,9 +40,9 @@ const Stock = () => {
   const resultado = !buscador
     ? productos
     : productos.filter((dato) =>
-        dato.descripcion.toLowerCase().includes(buscador.toLocaleLowerCase())
+        dato.descripcion.toLowerCase().includes(buscador.toLowerCase())
       );
-
+      
   useEffect(() => {
     if(GetToken() === "")
     {
@@ -55,7 +55,6 @@ const Stock = () => {
 
   return (
     <div className="container  pt-4">
-     
         {/* accordion */}
         <OrdenStock />
         {/* busqueda de productos */}
@@ -80,8 +79,9 @@ const Stock = () => {
             </tr>
           </thead>
           <tbody className="table-group-divider" >
-            {resultado.map((producto) => (
-              <Producto paramProducto={producto} />
+            {
+            resultado.map((producto) => (
+              <Producto key = {producto.id} paramProducto={producto} />
             ))}
           </tbody>
         </table>

@@ -2,10 +2,12 @@ import { create } from "zustand";
 
 export const useStore = create((set, get) => ({
   items: [],
+  rol: {},
   count: 0,
   token: "",
   inc: () => set((state) => ({ count: state.count + 1 })),
   SetToken: (tk) => set(() => ({ token: tk })),
+  SetRol: (r) => set(() => ({ rol: r })),
   AddProduct: (producto) =>{
     const { items } = get();
 
@@ -36,6 +38,21 @@ export const useStore = create((set, get) => ({
       SetToken(tk)
     }
     return token;
+  },
+  GetPermiso: (paramPermiso) => {
+    const { rol } = get(); 
+    
+    if(rol.permisos !== undefined)
+    {
+       const p = rol.permisos.filter((d) => d.nombre_permiso == paramPermiso)
+       if(p.length == 1)
+        {
+          console.log(p[0].activo)
+          return p[0].activo
+        }
+    }
+    return false
+  
   },
   Total: () => {
     const { items } = get();
