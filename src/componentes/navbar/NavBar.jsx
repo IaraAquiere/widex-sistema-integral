@@ -3,6 +3,7 @@ import { useStore } from "../../store/UseStore";
 import "./NavBar.css";
 import logo from '../../assets/imagenes/widex-logo-solo.png';
 import logo2 from "../../assets/imagenes/widex-dark-gray-logo.png";
+
 const NavBar = () => {
   const { SetToken } = useStore();
   const navigate = useNavigate();
@@ -62,13 +63,13 @@ const NavBar = () => {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/permisos">
-                    Permisos
+                  <Link className="nav-link" to="/listausuarios">
+                    Lista Usuarios
                   </Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/cambiorol">
-                    Cambiar Rol
+                    Roles
                   </Link>
                 </li>
                 <li className="nav-item">

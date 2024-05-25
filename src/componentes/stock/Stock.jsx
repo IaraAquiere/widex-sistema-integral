@@ -54,8 +54,8 @@ const Stock = () => {
   }, []);
 
   return (
-    <div className="container">
-      <div className=" accordion   p-3" id="accordionFlushExample">
+    <div className="container  pt-4">
+     
         {/* accordion */}
         <OrdenStock />
         {/* busqueda de productos */}
@@ -66,7 +66,7 @@ const Stock = () => {
           value={buscador}
           placeholder="Buscar Productos"
         />
-      </div>
+
       {/* tabla de productos */}
       <div>
         <table className="table table-hover table-bordered ">

@@ -18,7 +18,7 @@ const Ordenes = () => {
   const resultado = !buscar
     ? data
     : data.filter((dato) =>
-        dato.razoN_SOCI.toLowerCase().includes(buscar.toLocaleLowerCase())
+        dato.fechA_PEDI.toLowerCase().includes(buscar.toLocaleLowerCase())
       );
   
   useEffect(() => {

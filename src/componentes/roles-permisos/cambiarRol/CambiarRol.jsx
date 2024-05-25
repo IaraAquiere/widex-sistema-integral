@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import Busqueda from "../../busqueda/Busqueda";
 import { useStore } from "../../../store/UseStore";
 
-const CambiarRol = ({ boton1, boton2, cerrarModal1, cerrarModal2, onclick}) => {
+
+
+const CambiarRol = () => {
   const { token } = useStore();
   const [roles, setRoles] = useState([]);
-  const [rolSeleccionado, setRolSeleccionado] = useState("");
 
   const obtenerRoles = async () => {
     try {
@@ -30,61 +32,50 @@ const CambiarRol = ({ boton1, boton2, cerrarModal1, cerrarModal2, onclick}) => {
     obtenerRoles();
   }, []);
 
-  const handleSeleccionar = (event) => {
-    setRolSeleccionado(event.target.value);
-  };
-
   return (
     <>
-      <div
-        class="modal fade"
-        id="staticBackdrop"
-        data-bs-backdrop="static"
-        data-bs-keyboard="false"
-        tabindex="-1"
-        aria-labelledby="staticBackdropLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="staticBackdropLabel">
-                Roles
-              </h1>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div class="modal-body">
-              <select
-                className="form-select"
-                aria-label="Seleccionar un rol"
-                value={rolSeleccionado}
-                onChange={handleSeleccionar}
-              >
-                <option selected>Seleccionar un rol</option>
-
-                {roles.map((rol) => (
-                  <option>{rol.nombre_rol}</option>
-                ))}
-              </select>
-            </div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss={cerrarModal1}
-              >
-                {boton1}
-              </button>
-              <button type="button" class="btn btn-primary" onClick={onclick} data-bs-dismiss={cerrarModal2}>
-                {boton2}
-              </button>
-            </div>
-          </div>
+      <Busqueda
+        className1="d-flex flex-row justify-content-center m-3"
+        className2="form-control form-control-lg border border-dark-subtle w-50  "
+        placeholder="Buscar Orden"
+      />
+      <div className="container p-3">
+        <table className="table table-hover table-bordered ">
+          <thead>
+            <tr>
+              <th>Rol</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody className="table-group-divider">
+            {roles.map((rol) => (
+              <tr>
+                <td>{rol.nombre_rol}</td>
+                <td>
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                  >
+                      Modificar
+                  </button>
+                </td>
+                <td>
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                  >
+                    Copiar
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div className="d-flex justify-content-end">
+        <div className="guardar-permisos">
+          <button className="btn btn-success">Guardar</button>
         </div>
       </div>
     </>

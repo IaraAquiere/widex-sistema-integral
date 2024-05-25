@@ -43,13 +43,10 @@ const ListaUsuarios = (props) => {
     : usuariosl.filter((data) =>
         data.usuarios.toLowerCase().includes(buscar.toLocaleLowerCase())
       );
-
-     
-
-      const handlePermisos = () => {
+      const handleclick = () => {
 
          
-          navigate("/permisos")
+          navigate("/cambiorol")
       }
   
 
@@ -83,14 +80,11 @@ const ListaUsuarios = (props) => {
                       <button
                         type="button"
                         className="cambiar"
-                        data-bs-toggle="modal"
-                        data-bs-target="#staticBackdrop"
-
+                        onClick={handleclick}
                       >
                         Cambiar Rol
                       </button>
                     </div>
-                    <CambiarRol boton1="Guardar" boton2="Crear Nuevo Rol" onclick={handlePermisos} cerrarModal2="modal" />
                     <div className="cambiar-contraseña">
                       <button type="button" className="cambiar">
                         Cambiar Con
