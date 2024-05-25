@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import Busqueda from "../../busqueda/Busqueda";
 import { useStore } from "../../../store/UseStore";
+import { useNavigate } from "react-router-dom";
 
 
 
 const CambiarRol = () => {
   const { token } = useStore();
   const [roles, setRoles] = useState([]);
+
+  const navigate = useNavigate();
 
   const obtenerRoles = async () => {
     try {
@@ -32,6 +35,19 @@ const CambiarRol = () => {
     obtenerRoles();
   }, []);
 
+  const Nuevo = () => {
+    navigate(`/permisos/-1/0`)
+  }
+
+const Copiar = (id_rol) => {
+  navigate(`/permisos/0/${id_rol}`)
+}
+
+const Modificar = (id_rol) => {
+  navigate(`/permisos/${id_rol}/${id_rol}`)
+}
+
+
   return (
     <>
       <Busqueda
@@ -45,25 +61,24 @@ const CambiarRol = () => {
             <tr>
               <th>Rol</th>
               <th></th>
-              <th></th>
             </tr>
           </thead>
           <tbody className="table-group-divider">
             {roles.map((rol) => (
-              <tr>
+              <tr key = {rol.id_rol}>
                 <td>{rol.nombre_rol}</td>
                 <td>
                   <button
                     type="button"
-                    class="btn btn-secondary"
+                    className="btn btn-secondary"
+                    onClick={ () => Modificar(rol.id_rol) }
                   >
                       Modificar
                   </button>
-                </td>
-                <td>
                   <button
                     type="button"
-                    class="btn btn-primary"
+                    className="btn btn-primary"
+                    onClick={ () => Copiar(rol.id_rol) }
                   >
                     Copiar
                   </button>
@@ -72,11 +87,6 @@ const CambiarRol = () => {
             ))}
           </tbody>
         </table>
-      </div>
-      <div className="d-flex justify-content-end">
-        <div className="guardar-permisos">
-          <button className="btn btn-success">Guardar</button>
-        </div>
       </div>
     </>
   );

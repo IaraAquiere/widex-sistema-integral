@@ -19,7 +19,7 @@ function App() {
         <Route path="/ordenes" element={<Ordenes />} />
         <Route path="/listausuarios" element={<ListarUsuarios />} />
         <Route path="/micuenta" element={<MiCuenta />} />
-        <Route path="/permisos" element={<Permisos/>}/>
+        <Route path="/permisos/:pAccion/:pId_rol" element={<Permisos />}/>
         <Route path="/cambiorol" element={<CambiarRol/>}/>
       </Routes>
     </BrowserRouter>
