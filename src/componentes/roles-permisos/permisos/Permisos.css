@@ -1,58 +1,54 @@
-.roles{
-    display: flex;
-    flex-wrap: nowrap;
-    flex-direction: row;
-    justify-content: flex-start;
-    padding: 20px;
+.roles {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding: 20px;
 }
 
-.form-control{
-    width: 400px;
+.form-control {
+  width: 400px;
 }
 
-.buscador{
-    padding-right: 20px;
+.buscador {
+  padding-right: 20px;
 }
 
-.boton-buscar{
-        width: 100px;
-        height: 35px;
-        font-size: small;
-        background-color: #313131;
-        color: white;
-        border: 10px;
-        border-radius: 4px;
+.boton-buscar {
+  width: 100px;
+  height: 35px;
+  font-size: small;
+  background-color: #313131;
+  color: white;
+  border: 10px;
+  border-radius: 4px;
 }
 
-
-.guardar-permisos{
-    padding-right: 110px;
+.guardar-permisos {
+  padding-right: 110px;
 }
 
-.btn{
-    width: 150px;
-    padding: 8px;
+.btn {
+  width: 150px;
+  padding: 8px;
 }
 
-.nuevo-rol{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 20px;
+.nuevo-rol {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 20px;
 }
 
-.nuevo-titulo{
-    font-size: 15px;
-    
+.nuevo-titulo {
+  font-size: 15px;
 }
 
-
-
-.titulo-nombre{
-    padding-right: 15px;
+.titulo-nombre {
+  padding-right: 15px;
 }
 
-.input-nombre{
-    padding-left: 15px;
+.input-nombre {
+  padding-left: 15px;
 }

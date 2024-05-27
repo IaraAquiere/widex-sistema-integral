@@ -4,10 +4,11 @@ import { useNavigate } from "react-router-dom";
 import Producto from "./Producto/Producto";
 import OrdenStock from "./OrdenStock/OrdenStock";
 import Busqueda from "../busqueda/Busqueda";
+
 import "./Stock.css";
 
 const Stock = () => {
-  const { token,GetToken } = useStore();
+  const { token, GetToken } = useStore();
   const [buscador, setBuscador] = useState("");
   const [productos, setProductos] = useState([]);
 
@@ -42,11 +43,10 @@ const Stock = () => {
     : productos.filter((dato) =>
         dato.descripcion.toLowerCase().includes(buscador.toLowerCase())
       );
-      
+
   useEffect(() => {
-    if(GetToken() === "")
-    {
-      console.log(GetToken())
+    if (GetToken() === "") {
+      console.log(GetToken());
       navigate("/");
     }
 
@@ -54,21 +54,20 @@ const Stock = () => {
   }, []);
 
   return (
-    <div className="container  pt-4">
-        {/* accordion */}
-        <OrdenStock />
-        {/* busqueda de productos */}
-        <Busqueda
-          className1="d-flex flex-row justify-content-center m-4"
-          className2="form-control border border-dark-subtle w-50"
-          onChange={busquedaProductos}
-          value={buscador}
-          placeholder="Buscar Productos"
-        />
-
+    <div className="container pt-4">
+      {/* accordion */}
+      <OrdenStock />
+      {/* busqueda de productos */}
+      <Busqueda
+        className1="d-flex flex-row justify-content-center m-4"
+        className2="form-control border border-dark-subtle w-50"
+        onChange={busquedaProductos}
+        value={buscador}
+        placeholder="Buscar Productos"
+      />
       {/* tabla de productos */}
       <div>
-        <table className="table table-hover table-bordered ">
+        <table className="table table-hover table-bordered">
           <thead>
             <tr>
               <th>Producto</th>
@@ -78,10 +77,9 @@ const Stock = () => {
               <th></th>
             </tr>
           </thead>
-          <tbody className="table-group-divider" >
-            {
-            resultado.map((producto) => (
-              <Producto key = {producto.id} paramProducto={producto} />
+          <tbody className="table-group-divider">
+            {resultado.map((producto) => (
+              <Producto key={producto.id} paramProducto={producto} />
             ))}
           </tbody>
         </table>

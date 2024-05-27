@@ -1,19 +1,18 @@
 import { useEffect, useState } from "react";
-import "./Login.css";
-import logoWidex from '../../assets/imagenes/widex-dark-gray-logo.png';
+import logoWidex from "../../assets/imagenes/widex-dark-gray-logo.png";
 import useLogin from "../../hooks/useLogin";
 import { useNavigate } from "react-router-dom";
-
 import { useStore } from "../../store/UseStore";
 
+import "./Login.css";
 const Login = () => {
   const [usuario, setUsuario] = useState("Victoria");
   const [contraseña, setContraseña] = useState("123456");
-  const [login,setLogin] = useState(0);
-  const { GetToken } =  useStore();
+  const [login, setLogin] = useState(0);
+  const { GetToken } = useStore();
   const navigate = useNavigate();
 
-  const { cargando, error } = useLogin(login,usuario,contraseña);
+  const { cargando, error } = useLogin(login, usuario, contraseña);
 
   const handleSubmit = (e) => {
     setLogin(login + 1);
@@ -21,8 +20,7 @@ const Login = () => {
   };
 
   useEffect(() => {
-    if(GetToken() !== "")
-    {
+    if (GetToken() !== "") {
       navigate("/ordenes");
     }
   }, []);
@@ -30,7 +28,7 @@ const Login = () => {
   return (
     <div className="todo">
       <div className="wrapper">
-       <img src={logoWidex} alt="" />
+        <img src={logoWidex} alt="logo" />
         <form onSubmit={handleSubmit}>
           <div className="text-login">
             <p>Usuario</p>

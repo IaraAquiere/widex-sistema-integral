@@ -1,6 +1,7 @@
 import { useStore } from "../../../store/UseStore";
 import { CgTrash, CgCloseR, CgFileDocument } from "react-icons/cg";
 import { useNavigate } from "react-router-dom";
+
 import "./OrdenStock.css";
 
 const OrdenStock = () => {
@@ -44,7 +45,7 @@ const OrdenStock = () => {
 
   return (
     <>
-      <div className="accordion " id="accordion">
+      <div className="accordion">
         <div className="accordion-item">
           <h2 className="accordion-header">
             <button
@@ -52,17 +53,12 @@ const OrdenStock = () => {
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#flush-collapseOne"
-              aria-expanded="false"
-              aria-controls="flush-collapseOne"
             >
-              Orden de Stock {items.length >  0 ? "(" + items.length + ")"   : ""}  {Total() == 0 ? "" : "$" + Total() }
+              Orden de Stock {items.length > 0 ? "(" + items.length + ")" : ""}{" "}
+              {Total() == 0 ? "" : "Total:  $" + Total()}
             </button>
           </h2>
-          <div
-            id="flush-collapseOne"
-            className="accordion-collapse collapse"
-            data-bs-parent="#accordionFlushExample"
-          >
+          <div id="flush-collapseOne" className="accordion-collapse collapse">
             <div className="accordion-body">
               <table className="table table-hover table-bordered ">
                 <thead>
@@ -85,7 +81,7 @@ const OrdenStock = () => {
                       <td>
                         <div className="d-flex justify-content-center align-items-center">
                           <button
-                            className="boton-eliminar "
+                            className="boton-eliminar"
                             onClick={() => Delete(product)}
                           >
                             <CgCloseR />
@@ -96,7 +92,7 @@ const OrdenStock = () => {
                   ))}
                 </tbody>
               </table>
-              <div className=" row ">
+              <div className="row">
                 <div className="col-4">
                   <input
                     id="Leyenda_1"
@@ -134,19 +130,19 @@ const OrdenStock = () => {
                     className="my-2 form-control"
                   />
                 </div>
-                <div className="col mt-3 ">
-                  <div className="total ">
+                <div className="col mt-3">
+                  <div className="total">
                     <h4>Total: $ {Total()}</h4>
                   </div>
-                  <div className="acomodar-botones ">
+                  <div className="acomodar-botones">
                     <div className="p-1">
-                      <button className="btn btn-danger " onClick={Vaciar}>
+                      <button className="btn btn-danger" onClick={Vaciar}>
                         Vaciar <CgTrash />
                       </button>
                     </div>
                     <div className="p-1">
                       <button
-                        className="btn btn-success "
+                        className="btn btn-success"
                         onClick={() => GuardarOrden()}
                       >
                         Guardar <CgFileDocument />

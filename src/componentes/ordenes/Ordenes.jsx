@@ -2,34 +2,33 @@ import Busqueda from "../busqueda/Busqueda";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useStore } from "../../store/UseStore";
-import  UseStock from "../../hooks/useStock";
+import UseStock from "../../hooks/useStock";
 
 import "./Ordenes.css";
 const Ordenes = () => {
-  const { token, GetToken, GetPermiso } = useStore();
+  const { GetToken, GetPermiso } = useStore();
   const navigate = useNavigate();
   const { data, cargando } = UseStock();
   const [buscar, setBuscar] = useState("");
 
-  const productoBusqueda= (e) => {
+  const productoBusqueda = (e) => {
     setBuscar(e.target.value);
   };
 
   const resultado = !buscar
     ? data
-    : data.filter((dato) =>
-        dato.razoN_SOCI.toLowerCase().includes(buscar.toLocaleLowerCase())
-        || dato.fechA_PEDI.includes(buscar)
+    : data.filter(
+        (dato) =>
+          dato.razoN_SOCI.toLowerCase().includes(buscar.toLocaleLowerCase()) ||
+          dato.fechA_PEDI.includes(buscar)
       );
-  
+
   useEffect(() => {
-    if(GetToken() === "")
-    {
+    if (GetToken() === "") {
       navigate("/");
     }
-    GetPermiso("/STOCK/ARTICULOS/COSELGI")
+    GetPermiso("/STOCK/ARTICULOS/COSELGI");
   }, []);
-
 
   return (
     <div className="table-wrapper">
@@ -38,10 +37,10 @@ const Ordenes = () => {
         className2="form-control form-control-lg border border-dark-subtle w-50  "
         placeholder="Buscar Orden"
         onChange={productoBusqueda}
-          value={buscar}
+        value={buscar}
       />
       <div className="tabla-busqueda">
-        <table className="table table-hover table-bordered ">
+        <table className="table table-hover ">
           <thead>
             <tr>
               <th>Numero</th>
@@ -53,8 +52,8 @@ const Ordenes = () => {
               <th>Factura</th>
             </tr>
           </thead>
-          <tbody className="table-group-divider">
-          {resultado.length === 0 ? (
+          <tbody className="table-group">
+            {resultado.length === 0 ? (
               <div className="d-flex justify-cotents-center">
                 <p>No se encontro ningun pedido</p>
               </div>

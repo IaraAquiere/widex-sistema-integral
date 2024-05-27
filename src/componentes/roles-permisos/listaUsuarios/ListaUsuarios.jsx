@@ -3,7 +3,7 @@ import { useStore } from "../../../store/UseStore";
 import Busqueda from "../../busqueda/Busqueda";
 import "./ListaUsuarios.css";
 import { useNavigate } from "react-router-dom";
-const ListaUsuarios = (props) => {
+const ListaUsuarios = () => {
   const { token } = useStore();
   const [usuariosl, setUsuariosl] = useState([]);
   const [buscar, setBuscar] = useState("");
@@ -42,27 +42,24 @@ const ListaUsuarios = (props) => {
     : usuariosl.filter((data) =>
         data.usuarios.toLowerCase().includes(buscar.toLocaleLowerCase())
       );
-      const handleclick = () => {
-
-         
-          navigate("/cambiorol")
-      }
-  
+  const handleclick = () => {
+    navigate("/cambiorol");
+  };
 
   return (
     <>
-    <div className="titulo">
-      <h1>Lista de Usuarios</h1>
-    </div>
+      <div className="titulo">
+        <h1>Lista de Usuarios</h1>
+      </div>
       <Busqueda
         className1="d-flex flex-row justify-content-center m-3"
-        className2="form-control form-control-lg border border-dark-subtle w-30  "
+        className2="form-control form-control-lg border border-dark-subtle w-30"
         placeholder="Buscar usuario"
         onChange={busquedaUsuarios}
         value={buscar}
       />
       <div className="container p-3">
-        <table className="table table-hover  ">
+        <table className="table table-hover">
           <thead>
             <tr>
               <th></th>

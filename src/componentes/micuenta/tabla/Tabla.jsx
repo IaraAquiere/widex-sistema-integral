@@ -4,7 +4,7 @@ const Tabla = ({ titulo }) => {
     <>
       <div className="tabla-micuenta">
         <p className="palabra">{titulo}</p>
-        <table className="table table-hover  ">
+        <table className="table table-hover">
           <thead>
             <tr>
               <th>Fecha</th>

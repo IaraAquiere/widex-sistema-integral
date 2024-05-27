@@ -6,7 +6,6 @@ const Busqueda = ({ onChange, value, placeholder, className1, className2 }) => {
           <input
             type="search"
             className={className2}
-            id="exampleFormControlInput1"
             placeholder={placeholder}
             value={value}
             onChange={onChange}

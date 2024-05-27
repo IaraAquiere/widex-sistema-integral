@@ -134,7 +134,7 @@ const Permisos = () => {
         value={buscador}
       />
       <div className="container p-3">
-        <table className="table table-hover table-bordered ">
+        <table className="table table-hover  ">
           <thead>
             <tr>
               <th>Permiso</th>

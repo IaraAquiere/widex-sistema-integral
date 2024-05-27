@@ -3,7 +3,7 @@ import "./MiCuenta.css";
 const MiCuenta = () => {
   return (
     <>
-      <div id="root">
+      <div >
         <div className="d-flex flex-colum align-items-center justify-content-center w-100">
           <div className="container">
             <div className="row">
@@ -13,7 +13,7 @@ const MiCuenta = () => {
                     <h2>Hola, usuario!</h2>
                   </div>
                   <div className="col ">
-                    <div className="estado">Limite de Credito:</div>
+                    <div className="limite">Limite de Credito:</div>
                   </div>
                 </div>
                 <div className="row">

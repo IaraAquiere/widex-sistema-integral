@@ -1,24 +1,22 @@
-.titulo{
+.titulo {
   font-size: large;
   margin: 20px;
-  padding-left: 90px ;
+  padding-left: 90px;
   display: flex;
   justify-content: flex-start;
 }
 
-
 .cambiar {
-    width: 100px;
-    height: 30px;
-    font-size: small;
-    background-color:#20bca0 ;
-    color: white;
-    border: 10px;
-    border-radius: 4px;
-  }
+  width: 100px;
+  height: 30px;
+  font-size: small;
+  background-color: #20bca0;
+  color: white;
+  border: 10px;
+  border-radius: 4px;
+}
 
-  .acomodar-borones{
-    display: flex;
-    justify-content: space-evenly;
-
-  }
+.acomodar-borones {
+  display: flex;
+  justify-content: space-evenly;
+}

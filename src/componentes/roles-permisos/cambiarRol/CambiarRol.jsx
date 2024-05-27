@@ -49,16 +49,16 @@ const CambiarRol = () => {
 
   return (
     <>
-    <div className="titulo">
-      <h1>Roles</h1>
-    </div>
+      <div className="titulo">
+        <h1>Roles</h1>
+      </div>
       <Busqueda
         className1="d-flex flex-row justify-content-center m-3"
-        className2="form-control form-control-lg border border-dark-subtle w-30  "
+        className2="form-control form-control-lg border border-dark-subtle w-30"
         placeholder="Buscar Rol"
       />
       <div className="container p-3">
-        <table className="table table-hover  ">
+        <table className="table table-hover">
           <thead>
             <tr>
               <th></th>
@@ -72,23 +72,22 @@ const CambiarRol = () => {
                 <td>
                   <div className="acomodar">
                     <div className="cambiar-rol">
-                    <button
-                      type="button"
-                      className="btn btn-success"
-                      onClick={() => Modificar(rol.id_rol)}
-                    >
-                      Modificar
-                    </button>
+                      <button
+                        type="button"
+                        className="btn btn-success"
+                        onClick={() => Modificar(rol.id_rol)}
+                      >
+                        Modificar
+                      </button>
                     </div>
-                    <div className="cambiar-contraseña">
-
-                    <button
-                      type="button"
-                      className="btn btn-secondary"
-                      onClick={() => Copiar(rol.id_rol)}
-                    >
-                      Copiar
-                    </button>
+                    <div className="cambiar-copiar">
+                      <button
+                        type="button"
+                        className="btn btn-secondary"
+                        onClick={() => Copiar(rol.id_rol)}
+                      >
+                        Copiar
+                      </button>
                     </div>
                   </div>
                 </td>

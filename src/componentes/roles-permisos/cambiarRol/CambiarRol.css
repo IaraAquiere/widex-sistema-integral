@@ -1,22 +1,21 @@
-.titulo{
-    font-size: large;
-    margin: 20px;
-    padding-left: 90px ;
-    display: flex;
-    justify-content: flex-start;
+.titulo {
+  font-size: large;
+  margin: 20px;
+  padding-left: 90px;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .btn {
-    width: 100px;
-    height: 30px;
-    font-size: small;
-    color: white;
-    border: 10px;
-    border-radius: 4px;
-  }
+  width: 100px;
+  height: 30px;
+  font-size: small;
+  color: white;
+  border: 10px;
+  border-radius: 4px;
+}
 
-  .acomodar{
-    display: flex;
-    justify-content: space-evenly;
-
-  }
+.acomodar {
+  display: flex;
+  justify-content: space-evenly;
+}

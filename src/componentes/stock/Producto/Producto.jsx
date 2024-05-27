@@ -1,13 +1,12 @@
 import { useState } from "react";
 import { useStore } from "../../../store/UseStore";
+
 import "./Producto.css";
 
-
 const Producto = (paramProducto) => {
-  const { AddProduct} = useStore();
+  const { AddProduct } = useStore();
   const [contador, setContador] = useState(0);
   const [producto, setProducto] = useState(paramProducto.paramProducto);
-
 
   const AgregarProducto = () => {
     if (contador === 0) {
@@ -20,7 +19,7 @@ const Producto = (paramProducto) => {
   };
 
   const sumar = () => {
-      setContador(contador + 1);
+    setContador(contador + 1);
   };
 
   const restar = () => {
@@ -36,9 +35,13 @@ const Producto = (paramProducto) => {
       <td>{producto.stock}</td>
       <td>
         <div className="controles">
-          <button className="botonesSumaResta" onClick={restar}>-</button>
+          <button className="botonesSumaResta" onClick={restar}>
+            -
+          </button>
           <div>{contador}</div>
-          <button className="botonesSumaResta" onClick={sumar}>+</button>
+          <button className="botonesSumaResta" onClick={sumar}>
+            +
+          </button>
         </div>
       </td>
       <td>
