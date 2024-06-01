@@ -5,8 +5,12 @@ export const useStore = create((set, get) => ({
   rol: {},
   count: 0,
   token: "",
+  nombre: "",
+  limiteCredito: 99,
   inc: () => set((state) => ({ count: state.count + 1 })),
   SetToken: (tk) => set(() => ({ token: tk })),
+  SetNombre: (nom) => set(() => ({ nombre: nom })),
+  SetLimite: (limite) => set(() => ({ limiteCredito: limite })),
   SetRol: (r) => set(() => ({ rol: r })),
   AddProduct: (producto) =>{
     const { items } = get();
@@ -29,7 +33,11 @@ export const useStore = create((set, get) => ({
     }));
   },
   Vaciar: () => set(() => ({ items: [] })),
-
+  GetNombre: () => {
+    const { nombre } = get();
+    
+    return nombre;
+  },
   GetToken: () => {
     const tk = localStorage.getItem("miToken");
     const { token, SetToken } = get();

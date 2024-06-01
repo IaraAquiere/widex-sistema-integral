@@ -6,7 +6,7 @@ function useLogin(login,usuario,contrasena) {
   const [cargando, setCargando] = useState(null);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-  const { SetToken,SetRol } = useStore();
+  const { SetToken,SetRol,SetNombre, SetLimite } = useStore();
 
   useEffect(() => {
     if(login > 0)
@@ -36,6 +36,9 @@ function useLogin(login,usuario,contrasena) {
           if (login.token != undefined) {
             console.log(login);
             SetToken(login.token)
+            SetLimite(login.limiteCredito)
+            SetNombre(usuario)
+            SetLimite
             SetRol(login.rol);
             localStorage.setItem("miToken", login.token);
             navigate("/ordenes")
