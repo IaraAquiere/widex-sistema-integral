@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./Tabla.css";
 
-const Tabla = ({ titulo, comps }) => {
+const Tabla = ({ titulo, comps, pendientecheck, pendiente }) => {
   const [comprobantes,setComprobantes] = useState([]);
 
   useEffect(() => {
@@ -15,12 +15,12 @@ const Tabla = ({ titulo, comps }) => {
         <table className="table table-hover">
           <thead>
             <tr>
+              <th>{pendientecheck}</th>
               <th>Fecha</th>
               <th>Tipo Comprobante</th>
               <th>Nro</th>
               <th>Importe</th>
               <th>Pendiente</th>
-              <th>Link Pago</th>
             </tr>
           </thead>
           <tbody className="table-group">
@@ -28,12 +28,12 @@ const Tabla = ({ titulo, comps }) => {
           comprobantes == undefined ? <tr></tr> :
           comprobantes.map( (x) => 
               <tr key={x.n_comp}>
+                <td>{pendiente}</td>
               <td>{x.fecha_emis}</td>
               <td>{x.t_comp}</td>
               <td>{x.n_comp}</td>
               <td>{x.importe}</td>
               <td>{x.pendiente}</td>
-              <td><a>Pagos</a>Link</td>
               </tr> 
               )}
 

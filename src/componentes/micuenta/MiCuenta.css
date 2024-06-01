@@ -3,3 +3,17 @@
   justify-content: end;
   font-size: large;
 }
+
+
+.boton-pagar{
+  display: flex;
+  justify-content: end;
+  padding-top: 20px;
+  padding-right: 20px;
+  font-size: large;
+}
+
+.texto-pagar{
+  padding-right: 15px;
+}
+
