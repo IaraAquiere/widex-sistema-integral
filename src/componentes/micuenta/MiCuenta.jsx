@@ -6,7 +6,12 @@ import { useStore } from "../../store/UseStore";
 const MiCuenta = () => {
   const [comprobantes, setComprobantes] = useState([]);
   const { token, GetNombre, limiteCredito } = useStore();
-  const [importeAPagar,setImporteAPagar] = useState(0);
+  const [importeAPargar,setImporteAPagar] = useState(0);
+
+  const ActualizarImporte = (importeChk) =>
+  {
+      setImporteAPagar(Number((importeAPargar + importeChk).toFixed(2)))
+  } 
 
   useEffect(() => {
     const myHeaders = new Headers();
@@ -42,7 +47,7 @@ const MiCuenta = () => {
                       Limite de Credito: $ {limiteCredito}
                     </div>
                     <div className="boton-pagar">
-                      <div className="texto-pagar">Total a pagar : $ {importeAPagar}</div>
+                      <div className="texto-pagar">Total a pagar : $ {importeAPargar}</div>
                       <button className="btn btn-success">Pagar</button>
                     </div>
                   </div>
@@ -51,8 +56,7 @@ const MiCuenta = () => {
                   <Tabla
                     titulo="Pendientes"
                     comps={comprobantes.filter((x) => x.cancelado == false)}
-                    importeAPagar = {importeAPagar}
-                    setImporteAPagar = {setImporteAPagar}
+                    ActualizarImporte = {ActualizarImporte}
                   />
                 </div>
                 <div className="row">

@@ -1,24 +1,17 @@
 import { useEffect, useState } from "react";
 import "./Tabla.css";
 
-const Tabla = ({ titulo, comps, importeAPagar, setImporteAPagar }) => {
+const Tabla = ({ titulo, comps, ActualizarImporte }) => {
   const [comprobantes,setComprobantes] = useState([]);
+  
+  const checkClick = (e,importeCheck) => {
+  
+    if(e.target.checked)
+        ActualizarImporte(Number((importeCheck).toFixed(2)))
+      else
+        ActualizarImporte(Number((importeCheck * (-1)).toFixed(2)))
 
-
-
-  const checkClick = (e, importeCheck) =>
-    {   
-      let x = importeAPagar
-      if(e.target.checked)
-      {
-        x += importeCheck
-      } else
-      {
-        x -= importeCheck
-      }  
-      setImporteAPagar(x)  
-      console.log(x)
-    }
+  }
 
   useEffect(() => {
     setComprobantes(comps)
@@ -44,17 +37,12 @@ const Tabla = ({ titulo, comps, importeAPagar, setImporteAPagar }) => {
           comprobantes == undefined ? <tr></tr> :
           comprobantes.map( (x) => 
               <tr key={x.n_comp}>
-                <td>
-
-                <div class="form-check form-check">
-                        <input
-                          class="form-check-input"
+                <td>  <input
+                          className="form-check-input"
                           type="checkbox"
                           id="inlineCheckbox"
-                          onClick={ (e) => checkClick(e, Number(x.importe)) }
-                        />
-                      </div>
-                </td>
+                          onClick={(e) => checkClick(e,parseFloat(x.importe))}
+                        /></td>
               <td>{x.fecha_emis}</td>
               <td>{x.t_comp}</td>
               <td>{x.n_comp}</td>
