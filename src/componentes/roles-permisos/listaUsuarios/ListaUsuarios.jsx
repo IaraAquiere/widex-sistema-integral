@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import { useStore } from "../../../store/UseStore";
-import Busqueda from "../../busqueda/Busqueda";
-import "./ListaUsuarios.css";
 import { useNavigate } from "react-router-dom";
+import Busqueda from "../../busqueda/Busqueda";
+import ModalRoles from "./modalRoles/ModalRoles.jsx";
+import "./ListaUsuarios.css";
+
+
 const ListaUsuarios = () => {
   const { token } = useStore();
   const [usuariosl, setUsuariosl] = useState([]);
@@ -42,9 +45,7 @@ const ListaUsuarios = () => {
     : usuariosl.filter((data) =>
         data.usuarios.toLowerCase().includes(buscar.toLocaleLowerCase())
       );
-  const handleclick = () => {
-    navigate("/cambiorol");
-  };
+ 
 
   return (
     <>
@@ -79,11 +80,12 @@ const ListaUsuarios = () => {
                       <button
                         type="button"
                         className="cambiar"
-                        onClick={handleclick}
+                        data-bs-toggle="modal" data-bs-target="#staticBackdrop"
                       >
                         Cambiar Rol
                       </button>
                     </div>
+                    <ModalRoles/>
                     <div className="cambiar-contraseña">
                       <button type="button" className="cambiar">
                         Cambiar Con

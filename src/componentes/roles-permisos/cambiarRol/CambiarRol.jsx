@@ -8,7 +8,7 @@ import "./CambiarRol.css";
 const CambiarRol = () => {
   const { token } = useStore();
   const [roles, setRoles] = useState([]);
-
+const [buscarRoles, setBuscarRoles] = useState("");
   const navigate = useNavigate();
 
   const obtenerRoles = async () => {
@@ -47,6 +47,18 @@ const CambiarRol = () => {
     navigate(`/permisos/${id_rol}/${id_rol}`);
   };
 
+  
+
+  const rolesBusqueda = (e) => {
+    setBuscarRoles(e.target.value);
+  };
+
+  const rolesResultado = !buscarRoles
+    ? roles
+    : roles.filter(
+        (dato) => dato.nombre_rol.toLowerCase().includes(buscarRoles.toLocaleLowerCase()) 
+      );
+
   return (
     <>
       <div className="titulo">
@@ -56,6 +68,8 @@ const CambiarRol = () => {
         className1="d-flex flex-row justify-content-center m-3"
         className2="form-control form-control-lg border border-dark-subtle w-30"
         placeholder="Buscar Rol"
+        onChange={rolesBusqueda}
+        value={buscarRoles}
       />
       <div className="container p-3">
         <table className="table table-hover">
@@ -66,7 +80,7 @@ const CambiarRol = () => {
             </tr>
           </thead>
           <tbody className="table-group-divider">
-            {roles.map((rol) => (
+            {rolesResultado.map((rol) => (
               <tr key={rol.id_rol}>
                 <td>{rol.nombre_rol}</td>
                 <td>

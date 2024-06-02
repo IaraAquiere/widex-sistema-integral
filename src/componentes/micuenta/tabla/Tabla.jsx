@@ -1,8 +1,24 @@
 import { useEffect, useState } from "react";
 import "./Tabla.css";
 
-const Tabla = ({ titulo, comps, pendientecheck, pendiente }) => {
+const Tabla = ({ titulo, comps, importeAPagar, setImporteAPagar }) => {
   const [comprobantes,setComprobantes] = useState([]);
+
+
+
+  const checkClick = (e, importeCheck) =>
+    {   
+      let x = importeAPagar
+      if(e.target.checked)
+      {
+        x += importeCheck
+      } else
+      {
+        x -= importeCheck
+      }  
+      setImporteAPagar(x)  
+      console.log(x)
+    }
 
   useEffect(() => {
     setComprobantes(comps)
@@ -15,7 +31,7 @@ const Tabla = ({ titulo, comps, pendientecheck, pendiente }) => {
         <table className="table table-hover">
           <thead>
             <tr>
-              <th>{pendientecheck}</th>
+              <th></th>
               <th>Fecha</th>
               <th>Tipo Comprobante</th>
               <th>Nro</th>
@@ -28,7 +44,17 @@ const Tabla = ({ titulo, comps, pendientecheck, pendiente }) => {
           comprobantes == undefined ? <tr></tr> :
           comprobantes.map( (x) => 
               <tr key={x.n_comp}>
-                <td>{pendiente}</td>
+                <td>
+
+                <div class="form-check form-check">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id="inlineCheckbox"
+                          onClick={ (e) => checkClick(e, Number(x.importe)) }
+                        />
+                      </div>
+                </td>
               <td>{x.fecha_emis}</td>
               <td>{x.t_comp}</td>
               <td>{x.n_comp}</td>

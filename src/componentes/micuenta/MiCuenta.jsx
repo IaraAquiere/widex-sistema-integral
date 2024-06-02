@@ -6,7 +6,7 @@ import { useStore } from "../../store/UseStore";
 const MiCuenta = () => {
   const [comprobantes, setComprobantes] = useState([]);
   const { token, GetNombre, limiteCredito } = useStore();
-
+  const [importeAPagar,setImporteAPagar] = useState(0);
 
   useEffect(() => {
     const myHeaders = new Headers();
@@ -42,7 +42,7 @@ const MiCuenta = () => {
                       Limite de Credito: $ {limiteCredito}
                     </div>
                     <div className="boton-pagar">
-                      <div className="texto-pagar">Total a pagar : $ 12345</div>
+                      <div className="texto-pagar">Total a pagar : $ {importeAPagar}</div>
                       <button className="btn btn-success">Pagar</button>
                     </div>
                   </div>
@@ -51,15 +51,8 @@ const MiCuenta = () => {
                   <Tabla
                     titulo="Pendientes"
                     comps={comprobantes.filter((x) => x.cancelado == false)}
-                    pendiente={
-                      <div class="form-check form-check">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          id="inlineCheckbox"
-                        />
-                      </div>
-                    }
+                    importeAPagar = {importeAPagar}
+                    setImporteAPagar = {setImporteAPagar}
                   />
                 </div>
                 <div className="row">
