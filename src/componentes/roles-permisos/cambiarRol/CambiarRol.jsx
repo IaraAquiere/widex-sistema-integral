@@ -53,7 +53,7 @@ const [buscarRoles, setBuscarRoles] = useState("");
     setBuscarRoles(e.target.value);
   };
 
-  const rolesResultado = !buscarRoles
+  const rolesResult = !buscarRoles
     ? roles
     : roles.filter(
         (dato) => dato.nombre_rol.toLowerCase().includes(buscarRoles.toLocaleLowerCase()) 
@@ -80,7 +80,7 @@ const [buscarRoles, setBuscarRoles] = useState("");
             </tr>
           </thead>
           <tbody className="table-group-divider">
-            {rolesResultado.map((rol) => (
+            {rolesResult.map((rol) => (
               <tr key={rol.id_rol}>
                 <td>{rol.nombre_rol}</td>
                 <td>

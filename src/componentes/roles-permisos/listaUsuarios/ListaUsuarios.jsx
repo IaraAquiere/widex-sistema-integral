@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import { useStore } from "../../../store/UseStore";
 import { useNavigate } from "react-router-dom";
 import Busqueda from "../../busqueda/Busqueda";
-import ModalRoles from "./modalRoles/ModalRoles.jsx";
+
 import "./ListaUsuarios.css";
+
 
 
 const ListaUsuarios = () => {
@@ -71,7 +72,7 @@ const ListaUsuarios = () => {
           </thead>
           <tbody className="table-group-divider">
             {listarBusqueda.map((usuarios) => (
-              <tr>
+              <tr key={usuarios.id_rol}>
                 <td>{usuarios.usuario}</td>
                 <td>{usuarios.nombre_rol}</td>
                 <td>
@@ -85,7 +86,7 @@ const ListaUsuarios = () => {
                         Cambiar Rol
                       </button>
                     </div>
-                    <ModalRoles/>
+                  
                     <div className="cambiar-contraseña">
                       <button type="button" className="cambiar">
                         Cambiar Con

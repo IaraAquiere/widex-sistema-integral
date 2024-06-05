@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-function useStock(url, method) {
+function useStock() {
   const [cargando, setCargando] = useState(null);
   const [error, setError] = useState(null);
   const [data, setData] = useState([]);

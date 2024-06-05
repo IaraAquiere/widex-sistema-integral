@@ -54,7 +54,7 @@ const OrdenStock = () => {
               data-bs-toggle="collapse"
               data-bs-target="#flush-collapseOne"
             >
-               Orden de Stock {items.length > 0 ? `(items.length)` : ""}
+               Orden de Stock {items.length > 0 ? " ( " + (items.length) + " ) " :  "" }
               {Total() == 0 ? "" : "Total:  $" + Total()}
             </button>
           </h2>
