@@ -80,8 +80,7 @@ const ListaUsuarios = () => {
                     <div className="cambiar-rol">
                       <button
                         type="button"
-                        className="cambiar"
-                        data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                        className="cambiar" 
                       >
                         Cambiar Rol
                       </button>
