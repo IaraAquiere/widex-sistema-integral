@@ -25,10 +25,8 @@ const Roles = () => {
     )
       .then((response) => response.text())
       .then((result) => {
-        console.log(result);
         const data = JSON.parse(result);
-        setRoles(result);
-        console.log(data);
+        setRoles(data);
       })
       .catch((error) => console.error(error));
   };
@@ -63,11 +61,12 @@ const Roles = () => {
             </tr>
           </thead>
           <tbody className="table-group-divider">
-            {listarBusqueda.map((rol) => {
-              <tr >
-                <td>{rol.nombre_rol}</td>
-              </tr>
-            })}
+          { 
+            listarBusqueda != [] ? listarBusqueda.map((rol) => (<p>{rol.nombre_rol}</p>) ) : <p></p>
+
+          }
+               
+            
           </tbody>
         </table>
     </>
