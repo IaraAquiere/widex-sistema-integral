@@ -22,7 +22,6 @@ function App() {
         <Route path="/micuenta" element={<MiCuenta />} />
         <Route path="/permisos/:pAccion/:pId_rol" element={<Permisos />}/>
         <Route path="/cambiorol" element={<CambiarRol/>}/>
-        <Route path="/roles" element={<Roles/>}/>
       </Routes>
     </BrowserRouter>
   );

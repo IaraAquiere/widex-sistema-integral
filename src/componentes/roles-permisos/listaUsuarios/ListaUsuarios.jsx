@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
 import { useStore } from "../../../store/UseStore";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Busqueda from "../../busqueda/Busqueda";
+import Roles from "../../roles/Roles"
 
 import "./ListaUsuarios.css";
-
-
 
 const ListaUsuarios = () => {
   const { token } = useStore();
@@ -46,7 +45,6 @@ const ListaUsuarios = () => {
     : usuariosl.filter((data) =>
         data.usuarios.toLowerCase().includes(buscar.toLocaleLowerCase())
       );
- 
 
   return (
     <>
@@ -67,7 +65,6 @@ const ListaUsuarios = () => {
               <th></th>
               <th></th>
               <th></th>
-              <th></th>
             </tr>
           </thead>
           <tbody className="table-group-divider">
@@ -80,14 +77,14 @@ const ListaUsuarios = () => {
                     <div className="cambiar-rol">
                       <button
                         type="button"
-                        className="cambiar" 
+                        className="cambiar"
+                        data-bs-toggle="modal"
+                        data-bs-target="#exampleModal"
                       >
-                        <Link to="/roles">
                         Cambiar Rol
-                        </Link>
                       </button>
+                      <Roles/>
                     </div>
-                  
                     <div className="cambiar-contraseña">
                       <button type="button" className="cambiar">
                         Cambiar Con
