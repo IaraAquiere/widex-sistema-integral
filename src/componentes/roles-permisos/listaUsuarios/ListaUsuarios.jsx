@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useStore } from "../../../store/UseStore";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Busqueda from "../../busqueda/Busqueda";
 
 import "./ListaUsuarios.css";
@@ -82,7 +82,9 @@ const ListaUsuarios = () => {
                         type="button"
                         className="cambiar" 
                       >
+                        <Link to="/roles">
                         Cambiar Rol
+                        </Link>
                       </button>
                     </div>
                   
