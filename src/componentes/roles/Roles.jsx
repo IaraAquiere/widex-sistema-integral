@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useStore } from "../../store/UseStore";
+import { useNavigate } from "react-router-dom";
 import Busqueda from "../busqueda/Busqueda";
 
-const Roles = () => {
-  const { token } = useStore();
+const Roles = ({ Cambiar }) => {
+  const { token, GetToken } = useStore();
   const [roles, setRoles] = useState([]);
   const [buscar, setBuscar] = useState("");
+  const navigate = useNavigate();
 
   const GetData = () => {
     const myHeaders = new Headers();
@@ -27,6 +29,9 @@ const Roles = () => {
   };
 
   useEffect(() => {
+    if (GetToken() === "") {
+      navigate("/");
+    }
     GetData();
   }, []);
 
@@ -39,33 +44,36 @@ const Roles = () => {
         data.nombre_rol.toLowerCase().includes(buscar.toLocaleLowerCase())
       );
 
+  const CambiarRol = (id) => {
+    Cambiar(id);
+  };
+
   return (
     <>
       <div
-        class="modal fade"
+        className="modal fade"
         id="exampleModal"
-        tabindex="-1"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="staticBackdropLabel">
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h1 className="modal-title fs-5" id="staticBackdropLabel">
                 Cambiar Rol
               </h1>
               <button
                 type="button"
-                class="btn-close"
+                className="btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
               ></button>
             </div>
-            <div class="modal-body">
+            <div className="modal-body">
               <Busqueda
                 className1="d-flex flex-row justify-content-center m-3"
                 className2="form-control form-control-lg border border-dark-subtle w-30"
-                placeholder="Buscar usuario"
+                placeholder="Buscar rol"
                 onChange={busquedaUsuarios}
                 value={buscar}
               />
@@ -83,8 +91,13 @@ const Roles = () => {
                         <td>{rol.nombre_rol}</td>
                         <td>
                           <div>
-                            <button type="button" className="btn btn-success">
-                              Agregar
+                            <button
+                              type="button"
+                              className="btn btn-success"
+                              data-bs-dismiss="modal"
+                              onClick={() => CambiarRol(rol.id_rol)}
+                            >
+                              Cambiar
                             </button>
                           </div>
                         </td>
@@ -95,18 +108,6 @@ const Roles = () => {
                   )}
                 </tbody>
               </table>
-            </div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Cancelar
-              </button>
-              <button type="button" class="btn btn-primary">
-                Cambiar
-              </button>
             </div>
           </div>
         </div>

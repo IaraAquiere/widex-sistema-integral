@@ -1,17 +1,19 @@
 import { useState, useEffect } from 'react';
+import { useStore } from "../store/UseStore";
 
 function useStock() {
   const [cargando, setCargando] = useState(null);
   const [error, setError] = useState(null);
   const [data, setData] = useState([]);
-
+  const { token } = useStore();
   useEffect(() => {
       setCargando('cargando...')
       setError(null);
       
       const myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
-  
+      myHeaders.append("Authorization", "Bearer " + token);
+
       const requestOptions = {
         method: "GET",
         headers: myHeaders,

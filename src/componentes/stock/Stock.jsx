@@ -18,7 +18,9 @@ const Stock = () => {
 
   const showData = async () => {
     const myHeaders = new Headers();
-    myHeaders.append("Authorization", "Bearer " + token);
+    const tk = GetToken()
+    console.log(tk)
+    myHeaders.append("Authorization", "Bearer " + tk);
     const requestOptions = {
       method: "POST",
       headers: myHeaders,
@@ -46,7 +48,6 @@ const Stock = () => {
 
   useEffect(() => {
     if (GetToken() === "") {
-      console.log(GetToken());
       navigate("/");
     }
 

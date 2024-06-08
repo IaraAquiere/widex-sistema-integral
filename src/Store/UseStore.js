@@ -40,11 +40,13 @@ export const useStore = create((set, get) => ({
   },
   GetToken: () => {
     const tk = localStorage.getItem("miToken");
-    const { token, SetToken } = get();
+    const { token,SetToken } = get();
     if(tk != undefined)
     {
-      SetToken(tk)
+      SetToken(tk) 
+      return tk
     }
+
     return token;
   },
   GetPermiso: (paramPermiso) => {

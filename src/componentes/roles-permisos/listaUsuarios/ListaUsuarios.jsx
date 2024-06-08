@@ -2,15 +2,17 @@ import { useState, useEffect } from "react";
 import { useStore } from "../../../store/UseStore";
 import { useNavigate } from "react-router-dom";
 import Busqueda from "../../busqueda/Busqueda";
-import Roles from "../../roles/Roles"
+import Roles from "../../roles/Roles";
 
 import "./ListaUsuarios.css";
 
 const ListaUsuarios = () => {
-  const { token } = useStore();
+  const { token, GetToken } = useStore();
   const [usuariosl, setUsuariosl] = useState([]);
   const [buscar, setBuscar] = useState("");
   const navigate = useNavigate();
+  const [cambiar, setCambiar] = useState("");
+
   const listarUsuarios = async () => {
     try {
       const respuestaUsuarios = await fetch(
@@ -22,6 +24,7 @@ const ListaUsuarios = () => {
           },
         }
       );
+
       if (!respuestaUsuarios) {
         throw new Error("Error de red");
       }
@@ -33,6 +36,9 @@ const ListaUsuarios = () => {
   };
 
   useEffect(() => {
+    if (GetToken() === "") {
+      navigate("/");
+    }
     listarUsuarios();
   }, []);
 
@@ -45,6 +51,35 @@ const ListaUsuarios = () => {
     : usuariosl.filter((data) =>
         data.usuarios.toLowerCase().includes(buscar.toLocaleLowerCase())
       );
+
+  const CambiarRol = (id) => {
+    console.log(id);
+    const myHeaders = new Headers();
+    myHeaders.append("Authorization", "bearer " + token);
+
+    const requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      redirect: "follow",
+    };
+    const url =
+      "http://localhost:5000/Permisos/GuardarUsuarioRol/" +
+      cambiar +
+      "/" +
+      id +
+      "";
+
+    console.log(url);
+    console.log("http://localhost:5000/Permisos/GuardarUsuarioRol/Chami/1");
+    fetch(url, requestOptions)
+      .then((response) => response.text())
+      .then((result) => {
+        alert(result);
+        setCambiar("");
+        listarUsuarios();
+      })
+      .catch((error) => console.error(error));
+  };
 
   return (
     <>
@@ -80,14 +115,9 @@ const ListaUsuarios = () => {
                         className="cambiar"
                         data-bs-toggle="modal"
                         data-bs-target="#exampleModal"
+                        onClick={() => setCambiar(usuarios.usuario)}
                       >
                         Cambiar Rol
-                      </button>
-                      <Roles/>
-                    </div>
-                    <div className="cambiar-contraseña">
-                      <button type="button" className="cambiar">
-                        Cambiar Con
                       </button>
                     </div>
                   </div>
@@ -96,8 +126,9 @@ const ListaUsuarios = () => {
             ))}
           </tbody>
         </table>
+        <Roles Cambiar={CambiarRol} />
       </div>
-    </>
+   </>
   );
 };
 

@@ -2,11 +2,14 @@ import Tabla from "./tabla/Tabla";
 import "./MiCuenta.css";
 import { useEffect, useState } from "react";
 import { useStore } from "../../store/UseStore";
+import { useNavigate } from "react-router-dom";
 
 const MiCuenta = () => {
   const [comprobantes, setComprobantes] = useState([]);
-  const { token, GetNombre, limiteCredito } = useStore();
+  const { token, GetNombre, limiteCredito,GetToken } = useStore();
   const [importeAPargar,setImporteAPagar] = useState(0);
+  const navigate = useNavigate();
+
 
   const ActualizarImporte = (importeChk) =>
   {
@@ -14,6 +17,12 @@ const MiCuenta = () => {
   } 
 
   useEffect(() => {
+    
+    if (GetToken() === "") {
+      navigate("/");
+    }
+    
+    console.log("tk" + token)
     const myHeaders = new Headers();
     myHeaders.append("Authorization", "Bearer " + token);
 
