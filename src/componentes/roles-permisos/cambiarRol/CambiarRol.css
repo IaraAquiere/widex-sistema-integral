@@ -19,3 +19,13 @@
   display: flex;
   justify-content: space-evenly;
 }
+
+.modificar{
+  width: 100px;
+  height: 30px;
+  font-size: small;
+  background-color: #20bca0;
+  color: white;
+  border: 10px;
+  border-radius: 4px;
+}

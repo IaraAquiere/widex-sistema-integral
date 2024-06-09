@@ -100,11 +100,13 @@ const ListaUsuarios = () => {
               <th></th>
               <th></th>
               <th></th>
+              <th></th>
             </tr>
           </thead>
           <tbody className="table-group-divider">
             {listarBusqueda.map((usuarios) => (
               <tr key={usuarios.id_rol}>
+                <td></td>
                 <td>{usuarios.usuario}</td>
                 <td>{usuarios.nombre_rol}</td>
                 <td>
@@ -128,7 +130,7 @@ const ListaUsuarios = () => {
         </table>
         <Roles Cambiar={CambiarRol} />
       </div>
-   </>
+    </>
   );
 };
 

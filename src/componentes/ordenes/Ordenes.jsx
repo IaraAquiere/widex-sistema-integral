@@ -48,8 +48,6 @@ const Ordenes = () => {
               <th colSpan="2">Cliente</th>
               <th>Fecha</th>
               <th>Estado</th>
-              <th>Nro. Entrega</th>
-              <th>Factura</th>
             </tr>
           </thead>
           <tbody className="table-group">

@@ -3,6 +3,8 @@ import { useStore } from "../../store/UseStore";
 import { useNavigate } from "react-router-dom";
 import Busqueda from "../busqueda/Busqueda";
 
+import "./Roles.css";
+
 const Roles = ({ Cambiar }) => {
   const { token, GetToken } = useStore();
   const [roles, setRoles] = useState([]);
@@ -77,37 +79,52 @@ const Roles = ({ Cambiar }) => {
                 onChange={busquedaUsuarios}
                 value={buscar}
               />
-              <table className="table table-hover">
-                <thead>
-                  <tr>
-                    <th></th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody className="table-group">
-                  {listarBusqueda != [] ? (
-                    listarBusqueda.map((rol) => (
-                      <tr key={rol.id_rol}>
-                        <td>{rol.nombre_rol}</td>
-                        <td>
-                          <div>
-                            <button
-                              type="button"
-                              className="btn btn-success"
-                              data-bs-dismiss="modal"
-                              onClick={() => CambiarRol(rol.id_rol)}
-                            >
-                              Cambiar
-                            </button>
-                          </div>
-                        </td>
+              <div className="col-12">
+                <div
+                  data-bs-spy="scroll"
+                  data-bs-smooth-scroll="true"
+                  className="scrollspy"
+                  tabIndex="0"
+                >
+                  <table className="table table-hover">
+                    <thead>
+                      <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
                       </tr>
-                    ))
-                  ) : (
-                    <td></td>
-                  )}
-                </tbody>
-              </table>
+                    </thead>
+                    <tbody className="table-group">
+                      {listarBusqueda != [] ? (
+                        listarBusqueda.map((rol) => (
+                          <tr key={rol.id_rol}>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>{rol.nombre_rol}</td>
+                            <td>
+                              <div>
+                                <button
+                                  type="button"
+                                  className="cambiar"
+                                  data-bs-dismiss="modal"
+                                  onClick={() => CambiarRol(rol.id_rol)}
+                                >
+                                  Cambiar
+                                </button>
+                              </div>
+                            </td>
+                          </tr>
+                        ))
+                      ) : (
+                        <td></td>
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
           </div>
         </div>

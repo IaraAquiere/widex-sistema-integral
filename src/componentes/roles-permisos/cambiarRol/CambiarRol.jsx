@@ -8,7 +8,7 @@ import "./CambiarRol.css";
 const CambiarRol = () => {
   const { token } = useStore();
   const [roles, setRoles] = useState([]);
-const [buscarRoles, setBuscarRoles] = useState("");
+  const [buscarRoles, setBuscarRoles] = useState("");
   const navigate = useNavigate();
 
   const obtenerRoles = async () => {
@@ -47,16 +47,14 @@ const [buscarRoles, setBuscarRoles] = useState("");
     navigate(`/permisos/${id_rol}/${id_rol}`);
   };
 
-  
-
   const rolesBusqueda = (e) => {
     setBuscarRoles(e.target.value);
   };
 
   const rolesResult = !buscarRoles
     ? roles
-    : roles.filter(
-        (dato) => dato.nombre_rol.toLowerCase().includes(buscarRoles.toLocaleLowerCase()) 
+    : roles.filter((dato) =>
+        dato.nombre_rol.toLowerCase().includes(buscarRoles.toLocaleLowerCase())
       );
 
   return (
@@ -77,32 +75,30 @@ const [buscarRoles, setBuscarRoles] = useState("");
             <tr>
               <th></th>
               <th></th>
+              <th></th>
             </tr>
           </thead>
           <tbody className="table-group-divider">
             {rolesResult.map((rol) => (
               <tr key={rol.id_rol}>
+                <td></td>
                 <td>{rol.nombre_rol}</td>
                 <td>
                   <div className="acomodar">
-                    <div className="cambiar-rol">
-                      <button
-                        type="button"
-                        className="btn btn-success"
-                        onClick={() => Modificar(rol.id_rol)}
-                      >
-                        Modificar
-                      </button>
-                    </div>
-                    <div className="cambiar-copiar">
-                      <button
-                        type="button"
-                        className="btn btn-secondary"
-                        onClick={() => Copiar(rol.id_rol)}
-                      >
-                        Copiar
-                      </button>
-                    </div>
+                    <button
+                      type="button"
+                      className="modificar"
+                      onClick={() => Modificar(rol.id_rol)}
+                    >
+                      Modificar
+                    </button>
+                    <button
+                      type="button"
+                      className="btn btn-secondary"
+                      onClick={() => Copiar(rol.id_rol)}
+                    >
+                      Copiar
+                    </button>
                   </div>
                 </td>
               </tr>
