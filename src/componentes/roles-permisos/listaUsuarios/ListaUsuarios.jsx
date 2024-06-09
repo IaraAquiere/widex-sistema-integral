@@ -8,8 +8,8 @@ import "./ListaUsuarios.css";
 
 const ListaUsuarios = () => {
   const { token, GetToken } = useStore();
-  const [usuariosl, setUsuariosl] = useState([]);
-  const [buscar, setBuscar] = useState("");
+  const [usuarios, setUsuarios] = useState([]);
+  const [buscarUsuarios, setBuscarUsuarios] = useState("");
   const navigate = useNavigate();
   const [cambiar, setCambiar] = useState("");
 
@@ -29,7 +29,7 @@ const ListaUsuarios = () => {
         throw new Error("Error de red");
       }
       const datosUsuarios = await respuestaUsuarios.json();
-      setUsuariosl(datosUsuarios);
+      setUsuarios(datosUsuarios);
     } catch (error) {
       console.error("error");
     }
@@ -43,17 +43,16 @@ const ListaUsuarios = () => {
   }, []);
 
   const busquedaUsuarios = (e) => {
-    setBuscar(e.target.value);
+    setBuscarUsuarios(e.target.value);
   };
 
-  const listarBusqueda = !buscar
-    ? usuariosl
-    : usuariosl.filter((data) =>
-        data.usuarios.toLowerCase().includes(buscar.toLocaleLowerCase())
+  const listarBusqueda = !buscarUsuarios
+    ? usuarios
+    : usuarios.filter((data) =>
+        data.usuarios.toLowerCase().includes(buscarUsuarios.toLowerCase())
       );
 
   const CambiarRol = (id) => {
-    console.log(id);
     const myHeaders = new Headers();
     myHeaders.append("Authorization", "bearer " + token);
 
@@ -69,8 +68,6 @@ const ListaUsuarios = () => {
       id +
       "";
 
-    console.log(url);
-    console.log("http://localhost:5000/Permisos/GuardarUsuarioRol/Chami/1");
     fetch(url, requestOptions)
       .then((response) => response.text())
       .then((result) => {
@@ -91,7 +88,7 @@ const ListaUsuarios = () => {
         className2="form-control form-control-lg border border-dark-subtle w-30"
         placeholder="Buscar usuario"
         onChange={busquedaUsuarios}
-        value={buscar}
+        value={buscarUsuarios}
       />
       <div className="container p-3">
         <table className="table table-hover">

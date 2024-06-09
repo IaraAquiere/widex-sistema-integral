@@ -24,19 +24,15 @@ const Permisos = () => {
       redirect: "follow",
     };
 
-    console.log(routeParams.pId_rol);
-
     fetch(
       "HTTP://localhost:5000/Permisos/ListarPorRol/" + routeParams.pId_rol,
       requestOptions
     )
       .then((response) => response.text())
       .then((result) => {
-        console.log(result);
         const data = JSON.parse(result);
         setNombreRol(data.nombre_rol);
         setPermisos(data.permisos);
-        console.log(data);
       })
       .catch((error) => console.error(error));
   };
@@ -51,7 +47,6 @@ const Permisos = () => {
       nombre_rol: NombreRol,
       permisos: permisos,
     });
-    console.log(raw);
 
     const requestOptions = {
       method: "POST",

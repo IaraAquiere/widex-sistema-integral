@@ -34,14 +34,18 @@ const Tabla = ({ titulo, comps, ActualizarImporte }) => {
             ) : (
               comprobantes.map((x) => (
                 <tr key={x.n_comp}>
-                   {x.pendiente <= 0 ? <td></td> : <td>
-                    <input
-                      className="form-check-input"
-                      type="checkbox"
-                      id="inlineCheckbox"
-                      onClick={(e) => checkClick(e, parseFloat(x.importe))}
-                    />
-                  </td>}
+                  {x.pendiente <= 0 ? (
+                    <td></td>
+                  ) : (
+                    <td>
+                      <input
+                        className="form-check-input"
+                        type="checkbox"
+                        id="inlineCheckbox"
+                        onClick={(e) => checkClick(e, parseFloat(x.importe))}
+                      />
+                    </td>
+                  )}
                   <td>{x.fecha_emis}</td>
                   <td>{x.t_comp}</td>
                   <td>{x.n_comp}</td>

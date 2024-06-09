@@ -6,23 +6,19 @@ import { useNavigate } from "react-router-dom";
 
 const MiCuenta = () => {
   const [comprobantes, setComprobantes] = useState([]);
-  const { token, GetNombre, limiteCredito,GetToken } = useStore();
-  const [importeAPargar,setImporteAPagar] = useState(0);
+  const { token, GetNombre, limiteCredito, GetToken } = useStore();
+  const [importeAPargar, setImporteAPagar] = useState(0);
   const navigate = useNavigate();
 
-
-  const ActualizarImporte = (importeChk) =>
-  {
-      setImporteAPagar(Number((importeAPargar + importeChk).toFixed(2)))
-  } 
+  const ActualizarImporte = (importeChk) => {
+    setImporteAPagar(Number((importeAPargar + importeChk).toFixed(2)));
+  };
 
   useEffect(() => {
-    
     if (GetToken() === "") {
       navigate("/");
     }
-    
-    console.log("tk" + token)
+
     const myHeaders = new Headers();
     myHeaders.append("Authorization", "Bearer " + token);
 
@@ -56,7 +52,9 @@ const MiCuenta = () => {
                       Limite de Credito: $ {limiteCredito}
                     </div>
                     <div className="boton-pagar">
-                      <div className="texto-pagar">Total a pagar : $ {importeAPargar}</div>
+                      <div className="texto-pagar">
+                        Total a pagar : $ {importeAPargar}
+                      </div>
                       <button className="btn btn-success">Pagar</button>
                     </div>
                   </div>
@@ -65,7 +63,7 @@ const MiCuenta = () => {
                   <Tabla
                     titulo="Pendientes"
                     comps={comprobantes.filter((x) => x.cancelado == false)}
-                    ActualizarImporte = {ActualizarImporte}
+                    ActualizarImporte={ActualizarImporte}
                   />
                 </div>
                 <div className="row">

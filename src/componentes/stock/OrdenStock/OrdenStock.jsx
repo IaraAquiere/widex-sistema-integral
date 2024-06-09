@@ -9,8 +9,6 @@ const OrdenStock = () => {
   const navigate = useNavigate();
 
   const GuardarOrden = () => {
-    console.log(JSON.stringify(items));
-
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append("Authorization", "Bearer " + token);
@@ -54,7 +52,8 @@ const OrdenStock = () => {
               data-bs-toggle="collapse"
               data-bs-target="#flush-collapseOne"
             >
-               Orden de Stock {items.length > 0 ? " ( " + (items.length) + " ) " :  "" }
+              Orden de Stock{" "}
+              {items.length > 0 ? " ( " + items.length + " ) " : ""}
               {Total() == 0 ? "" : "Total:  $" + Total()}
             </button>
           </h2>

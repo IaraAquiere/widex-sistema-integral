@@ -18,15 +18,13 @@ const Stock = () => {
 
   const showData = async () => {
     const myHeaders = new Headers();
-    const tk = GetToken()
-    console.log(tk)
+    const tk = GetToken();
     myHeaders.append("Authorization", "Bearer " + tk);
     const requestOptions = {
       method: "POST",
       headers: myHeaders,
       redirect: "follow",
     };
-    console.log(URL + "Productos/Listar");
     fetch(URL + "Productos/Listar", requestOptions)
       .then((response) => response.text())
       .then((result) => {
