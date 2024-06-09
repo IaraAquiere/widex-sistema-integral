@@ -48,8 +48,12 @@ const ListaUsuarios = () => {
 
   const listarBusqueda = !buscarUsuarios
     ? usuarios
-    : usuarios.filter((data) =>
-        data.usuarios.toLowerCase().includes(buscarUsuarios.toLowerCase())
+    : usuarios.filter(
+        (data) =>
+          data.usuario
+            .toLowerCase()
+            .includes(buscarUsuarios.toLowerCase()) ||
+          data.nombre_rol.toLowerCase().includes(buscarUsuarios)
       );
 
   const CambiarRol = (id) => {
@@ -102,7 +106,7 @@ const ListaUsuarios = () => {
           </thead>
           <tbody className="table-group-divider">
             {listarBusqueda.map((usuarios) => (
-              <tr key={usuarios.id_rol}>
+              <tr key={usuarios.username}>
                 <td></td>
                 <td>{usuarios.usuario}</td>
                 <td>{usuarios.nombre_rol}</td>
