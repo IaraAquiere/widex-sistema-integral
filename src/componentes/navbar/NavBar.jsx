@@ -4,7 +4,7 @@ import logo from "../../assets/imagenes/widex-logo-solo.png";
 import logo2 from "../../assets/imagenes/widex-dark-gray-logo.png";
 import "./NavBar.css";
 const NavBar = () => {
-  const { SetToken } = useStore();
+  const { SetToken, rol, nombre } = useStore();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -57,27 +57,72 @@ const NavBar = () => {
                     Stock
                   </Link>
                 </li>
-                <li className="nav-item" data-bs-dismiss="offcanvas">
-                  <Link className="nav-link" to="/listausuarios">
-                    Lista Usuarios
-                  </Link>
-                </li>
-                <li className="nav-item" data-bs-dismiss="offcanvas">
-                  <Link className="nav-link" to="/cambiorol">
-                    Roles
-                  </Link>
-                </li>
-                <li className="nav-item" data-bs-dismiss="offcanvas">
-                  <Link className="nav-link" to="/micuenta">
-                    Mi Cuenta
-                  </Link>
+
+                {rol.nombre_rol == "ADMIN" ? (
+                  <li className="nav-item dropdown">
+                    <a
+                      className="nav-link dropdown-toggle"
+                      href="#"
+                      role="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      Menu Administrador
+                    </a>
+                    <ul className="dropdown-menu">
+                      <li>
+                        <Link className="nav-link-dropdown" to="/cambiorol">
+                          Roles
+                        </Link>
+                      </li>
+                      <li>
+                        <hr className="dropdown-divider"></hr>
+                      </li>
+                      <li>
+                        <Link className="nav-link-dropdown" to="/listausuarios">
+                          Lista Usuarios
+                        </Link>
+                      </li>
+                    </ul>
+                  </li>
+                ) : (
+                  <></>
+                )}
+              </ul>
+              <ul className="navbar-nav ml-auto">
+                <li className="nav-item dropdown ">
+                  <a
+                    className="nav-link dropdown-toggle"
+                    href="#"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    {nombre}
+                  </a>
+                  <ul className="dropdown-menu dropdown-menu-end">
+                    <li>
+                      <Link className="nav-link-dropdown" to="/micuenta">
+                        Mi Cuenta
+                      </Link>
+                    </li>
+                    <li>
+                      <hr className="dropdown-divider"></hr>
+                    </li>
+                    <li>
+                      <Link
+                        className="nav-link-dropdown"
+                        to="/"
+                        onClick={Logout}
+                      >
+                        Cerrar sesion
+                      </Link>
+                    </li>
+                  </ul>
                 </li>
               </ul>
             </div>
           </div>
-          <Link className="logout-button" to="/" onClick={Logout}>
-            Cerrar sesion
-          </Link>
           <button
             className="navbar-toggler"
             type="button"

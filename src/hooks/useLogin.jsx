@@ -43,7 +43,7 @@ function useLogin(login,usuario,contrasena) {
             localStorage.setItem("miToken", login.token);
             navigate("/ordenes")
           } else {
-            setError("no hay token")
+            setError("usuario y/o comtraseña incorrecto/s")
           }
           setCargando(null)
         })

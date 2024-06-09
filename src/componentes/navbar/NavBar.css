@@ -13,6 +13,19 @@
   color: black;
 }
 
+.nav-link-dropdown {
+  position: relative;
+  padding: 10px;
+  color: rgb(0, 0, 0);
+  text-decoration-style: solid;
+  text-decoration: none;
+}
+
+.nav-link-dropdown:hover {
+  color: black;
+}
+
+
 .logo-w {
   height: 40px;
   width: 50px;
@@ -49,4 +62,8 @@
 
 .offcanvas {
   background-color: #5c83a7;
+}
+
+.nav-user {
+  list-style:none;
 }

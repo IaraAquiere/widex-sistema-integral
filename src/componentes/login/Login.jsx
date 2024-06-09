@@ -6,8 +6,8 @@ import { useStore } from "../../store/UseStore";
 
 import "./Login.css";
 const Login = () => {
-  const [usuario, setUsuario] = useState("Victoria");
-  const [contraseña, setContraseña] = useState("123456");
+  const [usuario, setUsuario] = useState("AGP");
+  const [contraseña, setContraseña] = useState("AGP");
   const [login, setLogin] = useState(0);
   const { GetToken } = useStore();
   const navigate = useNavigate();
