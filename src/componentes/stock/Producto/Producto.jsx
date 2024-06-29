@@ -30,6 +30,8 @@ const Producto = (paramProducto) => {
 
   return (
     <tr key={producto.id}>
+      <td>{producto.id}</td>
+    <td><img className="imgProducto" src="https://eshop.widex.pro/-/media/Global/BABY/Baby%20440%20BTE/BABY440-rite-Pearlwhite.ashx" alt="fotoprueba" /></td>
       <td>{producto.descripcion}</td>
       <td>${producto.precio}</td>
       <td>{producto.stock}</td>

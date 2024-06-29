@@ -11,6 +11,8 @@ const Ordenes = () => {
   const { data, cargando } = UseStock();
   const [buscar, setBuscar] = useState("");
 
+  
+
   const productoBusqueda = (e) => {
     setBuscar(e.target.value);
   };
@@ -29,6 +31,10 @@ const Ordenes = () => {
     }
     GetPermiso("/STOCK/ARTICULOS/COSELGI");
   }, []);
+  
+  const verOrden = () => {
+    navigate("/verorden");
+  };
 
   return (
     <div className="table-wrapper">
@@ -64,6 +70,15 @@ const Ordenes = () => {
                   <td colSpan="2">{orden.razoN_SOCI}</td>
                   <td>{orden.fechA_PEDI}</td>
                   <td>{orden.estado}</td>
+                  <td>
+                    <button
+                      type="button"
+                      className="agregar-boton"
+                      onClick={() => verOrden()}
+                    >
+                      Agregar
+                    </button>
+                  </td>
                 </tr>
               ))
             )}

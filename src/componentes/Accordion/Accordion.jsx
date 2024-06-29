@@ -1,46 +1,10 @@
-import { useStore } from "../../../store/UseStore";
-import { CgTrash, CgCloseR, CgFileDocument } from "react-icons/cg";
-import { useNavigate } from "react-router-dom";
+import { useStore } from "../../store/UseStore";
 
-import "./OrdenStock.css";
 
-const OrdenStock = () => {
-  const { items, Delete, Vaciar, Total, token } = useStore();
-  const navigate = useNavigate();
+import "./Accordion.css";
 
-  const GuardarOrden = () => {
-    const myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("Authorization", "Bearer " + token);
-
-    var ordenWeb = {
-      Items: items,
-      Leyenda_1: document.getElementById("Leyenda_1").value,
-      Leyenda_2: document.getElementById("Leyenda_2").value,
-      Leyenda_3: document.getElementById("Leyenda_3").value,
-      Leyenda_4: document.getElementById("Leyenda_4").value,
-      Leyenda_5: document.getElementById("Leyenda_5").value,
-    };
-
-    const raw = JSON.stringify(ordenWeb);
-
-    const requestOptions = {
-      method: "POST",
-      headers: myHeaders,
-      body: raw,
-      redirect: "follow",
-    };
-
-    fetch("http://localhost:5000/Stock/GuardarOrden", requestOptions)
-      .then((response) => response.text())
-      .then((result) => {
-        alert(result);
-        Vaciar();
-        navigate("/ordenes");
-      })
-      .catch((error) => console.error(error));
-  };
-
+const Accordion = ({tablaCarrito, onClick1, tituloboton1, onclick2, tituloboton2 }) => {
+  const { items, Total } = useStore(); 
   return (
     <>
       <div className="accordion">
@@ -52,7 +16,7 @@ const OrdenStock = () => {
               data-bs-toggle="collapse"
               data-bs-target="#flush-collapseOne"
             >
-              Orden de Stock{" "}
+              Orden de Stock
               {items.length > 0 ? " ( " + items.length + " ) " : ""}
               {Total() == 0 ? "" : "Total:  $" + Total()}
             </button>
@@ -64,32 +28,13 @@ const OrdenStock = () => {
                   <tr>
                     <th>Id</th>
                     <th>Producto</th>
+                    <th>Descripcion</th>
                     <th>Cantidad</th>
                     <th>Precio</th>
                     <th>Importe</th>
                   </tr>
                 </thead>
-                <tbody className="table-group-divider">
-                  {items.map((product) => (
-                    <tr key={product.id}>
-                      <td>{product.id}</td>
-                      <td>{product.descripcion}</td>
-                      <td>{product.cantidad}</td>
-                      <td>$ {product.precio}</td>
-                      <td>$ {product.cantidad * product.precio}</td>
-                      <td>
-                        <div className="d-flex justify-content-center align-items-center">
-                          <button
-                            className="boton-eliminar"
-                            onClick={() => Delete(product)}
-                          >
-                            <CgCloseR />
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
+                {tablaCarrito}
               </table>
               <div className="row">
                 <div className="col-4">
@@ -135,16 +80,16 @@ const OrdenStock = () => {
                   </div>
                   <div className="acomodar-botones">
                     <div className="p-1">
-                      <button className="btn btn-danger" onClick={Vaciar}>
-                        Vaciar <CgTrash />
+                      <button className="btn btn-danger" onClick={onClick1}>
+                        {tituloboton1}
                       </button>
                     </div>
                     <div className="p-1">
                       <button
                         className="btn btn-success"
-                        onClick={() => GuardarOrden()}
+                        onClick={onclick2}
                       >
-                        Guardar <CgFileDocument />
+                        {tituloboton2}
                       </button>
                     </div>
                   </div>
@@ -158,4 +103,4 @@ const OrdenStock = () => {
   );
 };
 
-export default OrdenStock;
+export default Accordion;

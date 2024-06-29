@@ -7,8 +7,11 @@ import ListarUsuarios from "./componentes/roles-permisos/listaUsuarios/ListaUsua
 import MiCuenta from "./componentes/micuenta/MiCuenta.jsx";
 import Permisos from "./componentes/roles-permisos/permisos/Permisos.jsx";
 import CambiarRol from "./componentes/roles-permisos/cambiarRol/CambiarRol.jsx";
+import VerOrden from "./componentes/VerOrden/VerOrden.jsx";
+
 import "./App.css";
-import Roles from "./componentes/roles/Roles.jsx";
+
+
 
 function App() {
   return (
@@ -22,6 +25,7 @@ function App() {
         <Route path="/micuenta" element={<MiCuenta />} />
         <Route path="/permisos/:pAccion/:pId_rol" element={<Permisos />}/>
         <Route path="/cambiorol" element={<CambiarRol/>}/>
+        <Route path="/verorden" element={<VerOrden/>} />
       </Routes>
     </BrowserRouter>
   );
