@@ -1,0 +1,7 @@
+.titulo-ver-orden {
+    font-size: large;
+    margin: 20px;
+    padding-left: 90px;
+    display: flex;
+    justify-content: flex-start;
+  }

@@ -32,7 +32,7 @@ const Ordenes = () => {
     GetPermiso("/STOCK/ARTICULOS/COSELGI");
   }, []);
   
-  const verOrden = () => {
+  const verOrden = (event) => {
     navigate("/verorden");
   };
 
@@ -56,7 +56,7 @@ const Ordenes = () => {
               <th>Estado</th>
             </tr>
           </thead>
-          <tbody className="table-group">
+          <tbody className="table-group" >
             {resultado.length === 0 ? (
               <div className="d-flex justify-cotents-center">
                 <p>No se encontro ningun pedido</p>
@@ -64,21 +64,12 @@ const Ordenes = () => {
             ) : (
               cargando ??
               resultado.map((orden) => (
-                <tr key={orden.id}>
-                  <td>{orden.nrO_PEDIDO}</td>
-                  <td colSpan="2">{orden.tipo}</td>
+                <tr key={orden.id} onClick={() => verOrden()}>
+                  <td >{orden.nrO_PEDIDO}</td>
+                  <td colSpan="2" >{orden.tipo}</td>
                   <td colSpan="2">{orden.razoN_SOCI}</td>
                   <td>{orden.fechA_PEDI}</td>
                   <td>{orden.estado}</td>
-                  <td>
-                    <button
-                      type="button"
-                      className="agregar-boton"
-                      onClick={() => verOrden()}
-                    >
-                      Agregar
-                    </button>
-                  </td>
                 </tr>
               ))
             )}

@@ -93,9 +93,16 @@ const Stock = () => {
       <Accordion
         tablaCarrito={<CarritoStock />}
         onClick={Vaciar}
-        tituloboton1={"Vaciar" + CgTrash }
+        tituloboton1={"Vaciar"}
         onclick2={() => GuardarOrden()}
-        tituloboton2={"Guardar" + CgFileDocument }  //arreglar esto
+        classnameAccordion1="accordion accordion-flush "
+        classnameAccordion2="accordion-button "
+        
+        boton={
+          <button className="btn btn-success" onClick={() => GuardarOrden()}>
+            Guardar
+          </button>
+        }
       />
       {/* busqueda de productos */}
       <Busqueda

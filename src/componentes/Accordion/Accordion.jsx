@@ -3,27 +3,22 @@ import { useStore } from "../../store/UseStore";
 
 import "./Accordion.css";
 
-const Accordion = ({tablaCarrito, onClick1, tituloboton1, onclick2, tituloboton2 }) => {
+const Accordion = ({tablaCarrito, onClick1, tituloboton1, classnameAccordion2, ariaExpanded, classnameAccordion1, boton }) => {
   const { items, Total } = useStore(); 
   return (
     <>
-      <div className="accordion">
+      <div className={classnameAccordion1}>
         <div className="accordion-item">
-          <h2 className="accordion-header">
-            <button
-              className="accordion-button collapsed"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#flush-collapseOne"
-            >
-              Orden de Stock
+        <h2 className="accordion-header">
+            <button className={classnameAccordion2} type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded={ariaExpanded} >
+            Orden de Stock
               {items.length > 0 ? " ( " + items.length + " ) " : ""}
               {Total() == 0 ? "" : "Total:  $" + Total()}
-            </button>
-          </h2>
-          <div id="flush-collapseOne" className="accordion-collapse collapse">
+            </button>   
+        </h2>
+        <div id="panelsStayOpen-collapseOne" className="accordion-collapse collapse show">
             <div className="accordion-body">
-              <table className="table table-hover table-bordered ">
+                <table className="table table-hover table-bordered ">
                 <thead>
                   <tr>
                     <th>Id</th>
@@ -85,16 +80,21 @@ const Accordion = ({tablaCarrito, onClick1, tituloboton1, onclick2, tituloboton2
                       </button>
                     </div>
                     <div className="p-1">
-                      <button
-                        className="btn btn-success"
-                        onClick={onclick2}
-                      >
-                        {tituloboton2}
-                      </button>
+                     {boton}
                     </div>
                   </div>
                 </div>
               </div>
+            </div>
+        </div>
+    </div>
+        <div className="accordion-item">
+          <h2 className="accordion-header">
+            
+          </h2>
+          <div id="flush-collapseOne" className="accordion-collapse collapse">
+            <div className="accordion-body">
+              
             </div>
           </div>
         </div>

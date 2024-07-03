@@ -27,6 +27,7 @@ export const useStore = create((set, get) => ({
       set((state) => ({items: [...state.items, producto] }))
     }
   },
+  SetItems: () => set((items) => ({ items: items })),
   Delete: (producto) => {
     set((state) => ({
       items: state.items.filter((item) => item.id !== producto.id),
